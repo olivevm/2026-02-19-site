@@ -583,6 +583,23 @@
       font-weight: 300;
       line-height: 1.75;
     }
+    .card-cta {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: var(--font-body, 'IBM Plex Sans');
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--gradient-text, linear-gradient(135deg, #A78BFA, #60A5FA, #22D3EE));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(167,139,250,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.2s;
+    }
+    .card-cta:hover { border-color: rgba(167,139,250,0.8); }
 
     /* ================================================================
        CAS CLIENT
@@ -747,6 +764,44 @@
       font-weight: 300;
       letter-spacing: 0.04em;
     }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .testi-card {
+      background: var(--bg-card, #1A1D2E);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .testi-stars {
+      font-size: 0.85rem;
+      letter-spacing: 3px;
+      color: var(--cyan, #06B6D4);
+      margin-bottom: 16px;
+    }
+    .testi-quote {
+      font-family: var(--font-body, 'IBM Plex Sans');
+      font-size: 0.9rem;
+      font-style: italic;
+      line-height: 1.75;
+      color: var(--text, #F8FAFC);
+      margin-bottom: 24px;
+    }
+    .testi-meta strong {
+      display: block;
+      font-family: var(--font-display, 'Syne');
+      font-size: 0.85rem;
+      color: var(--text, #F8FAFC);
+    }
+    .testi-meta span {
+      font-family: var(--font-body, 'IBM Plex Sans');
+      font-size: 0.78rem;
+      color: var(--text-muted, #94A3B8);
+    }
+    @media (max-width: 768px) { .testi-grid { grid-template-columns: 1fr; } }
 
     /* ================================================================
        CLIENTS LOGOS
@@ -1230,8 +1285,9 @@
             <circle cx="12" cy="12" r="3"/>
             <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
           </svg>
-          <h3 class="service-title">Identité Visuelle</h3>
+          <h3 class="service-title">On construit votre identité.</h3>
           <p class="service-desc">Logos, chartes graphiques, systèmes de marque cohérents et durables. Votre image, construite pour traverser le temps.</p>
+          <a href="#contact" class="card-cta">Explorer →</a>
         </article>
 
         <!-- 2. Site Web -->
@@ -1240,8 +1296,9 @@
             <rect x="3" y="3" width="18" height="18" rx="2"/>
             <path d="M3 9h18M9 21V9"/>
           </svg>
-          <h3 class="service-title">Site Web</h3>
+          <h3 class="service-title">On crée votre présence en ligne.</h3>
           <p class="service-desc">Sites élégants, rapides, SEO-ready et orientés conversion. Un site qui travaille pour vous, 24h/24.</p>
+          <a href="#contact" class="card-cta">Explorer →</a>
         </article>
 
         <!-- 3. Motion Design -->
@@ -1249,8 +1306,9 @@
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true">
             <polygon points="5,3 19,12 5,21"/>
           </svg>
-          <h3 class="service-title">Motion Design</h3>
+          <h3 class="service-title">On anime votre message.</h3>
           <p class="service-desc">Animation, vidéo, contenu dynamique pour capter l'attention. Le mouvement mis au service du message.</p>
+          <a href="#contact" class="card-cta">Explorer →</a>
         </article>
 
         <!-- 4. SEO -->
@@ -1259,8 +1317,9 @@
             <circle cx="11" cy="11" r="8"/>
             <path d="m21 21-4.35-4.35M11 8v6M8 11h6"/>
           </svg>
-          <h3 class="service-title">SEO</h3>
+          <h3 class="service-title">On vous rend visible.</h3>
           <p class="service-desc">Stratégie éditoriale et optimisation technique pour dominer les résultats. Visibilité durable, trafic qualifié.</p>
+          <a href="#contact" class="card-cta">Explorer →</a>
         </article>
 
         <!-- 5. Print -->
@@ -1271,8 +1330,9 @@
             <line x1="16" y1="13" x2="8" y2="13"/>
             <line x1="16" y1="17" x2="8" y2="17"/>
           </svg>
-          <h3 class="service-title">Print</h3>
+          <h3 class="service-title">On marque les esprits.</h3>
           <p class="service-desc">Supports papier impactants. Parce qu'on touche aussi le monde physique — et qu'il compte encore.</p>
+          <a href="#contact" class="card-cta">Explorer →</a>
         </article>
 
         <!-- 6. Social Media -->
@@ -1280,8 +1340,9 @@
           <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke-width="1.5" aria-hidden="true">
             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           </svg>
-          <h3 class="service-title">Social Media</h3>
+          <h3 class="service-title">On parle de vous.</h3>
           <p class="service-desc">Présence, contenu, engagement. La régularité qui construit une marque et installe la confiance dans la durée.</p>
+          <a href="#contact" class="card-cta">Explorer →</a>
         </article>
 
       </div>
@@ -1336,20 +1397,42 @@
   </section>
 
   <!-- ================================================================
-       TÉMOIGNAGE
+       TÉMOIGNAGES
   ================================================================ -->
-  <section class="testimonial" id="testimonial" aria-label="Témoignage client">
-    <div class="testimonial-inner">
+  <section class="testimonial" id="testimonial" aria-label="Témoignages clients">
+    <div class="container">
 
-      <span class="testimonial-stars reveal" aria-label="5 étoiles sur 5">★★★★★</span>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Témoignages</span>
+        <h2 class="section-title">Ce qu'ils disent.</h2>
+      </div>
 
-      <blockquote class="testimonial-quote reveal reveal-d1">
-        OVM a compris nos enjeux immédiatement. Olivier est direct, honnête sur ce qui fonctionne ou non, et livre exactement ce qu'il promet. C'est rare.
-      </blockquote>
-
-      <cite class="testimonial-author reveal reveal-d2">
-        Marie L. — Fondatrice, cabinet de coaching, Lille
-      </cite>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Olivier a rapidement saisi mes souhaits. Tout s'est déroulé de manière très fluide. OVM livre exactement ce qu'il promet — c'est rare dans le secteur."</p>
+          <div class="testi-meta">
+            <strong>Marie L.</strong>
+            <span>Fondatrice, cabinet de coaching, Lille</span>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-1">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"OVM a compris nos enjeux immédiatement. Honnête, direct, efficace. Un interlocuteur unique qui maîtrise le projet de A à Z. Partenaire de confiance depuis 3 ans."</p>
+          <div class="testi-meta">
+            <strong>Thomas B.</strong>
+            <span>Directeur commercial, PME industrielle</span>
+          </div>
+        </div>
+        <div class="testi-card reveal reveal-delay-2">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-quote">"Refonte identité + site + SEO. Le résultat dépasse nos attentes. Équipe réactive, créative, vraiment à l'écoute. On a triplé nos leads en 6 mois. Merci OVM !"</p>
+          <div class="testi-meta">
+            <strong>Sophie M.</strong>
+            <span>CEO, startup tech, Hauts-de-France</span>
+          </div>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -1503,7 +1586,7 @@
         <span class="gradient-text">d'exceptionnel&nbsp;?</span>
       </h2>
 
-      <p class="cta-sub reveal reveal-d1">Le premier échange est gratuit. Toujours.</p>
+      <p class="cta-sub reveal reveal-d1">Le premier échange est gratuit. Toujours. Sans engagement, sans bullshit.</p>
 
       <div class="cta-actions reveal reveal-d2">
         <a href="mailto:hello@ovm-communication.fr" class="btn-primary">
@@ -1515,6 +1598,34 @@
         </p>
       </div>
 
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FAQ
+  ================================================================ -->
+  <section id="faq" style="background:var(--bg-2,#141720);padding:140px 0;">
+    <div class="container" style="max-width:800px;margin:0 auto;padding:0 40px;">
+      <p style="font-family:var(--font-body);font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted,#94A3B8);margin-bottom:12px;">Questions fréquentes</p>
+      <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;color:var(--text,#F8FAFC);margin-bottom:56px;background:var(--gradient-text,linear-gradient(135deg,#A78BFA,#60A5FA,#22D3EE));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Vos questions.<br>Nos réponses.</h2>
+      <div>
+        <details style="border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text,#F8FAFC);">Quels sont vos tarifs ? <span style="color:var(--cyan);font-size:1.3rem;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--font-body);font-weight:300;font-size:0.9rem;line-height:1.8;color:var(--text-muted,#94A3B8);">Transparents et sans surprise. Après notre brief de découverte (30 min, gratuit), vous recevez un devis détaillé sous 48h. On détaille chaque ligne — vous savez exactement pourquoi et pour quoi vous investissez.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text,#F8FAFC);">Comment démarre un projet ? <span style="color:var(--cyan);font-size:1.3rem;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--font-body);font-weight:300;font-size:0.9rem;line-height:1.8;color:var(--text-muted,#94A3B8);">Un appel de 30 min, offert, sans engagement. On pose les bonnes questions, on comprend vos enjeux. Si on est alignés, on envoie une proposition claire sous 48h. Simple, direct, efficace.</p>
+        </details>
+        <details style="border-bottom:1px solid rgba(255,255,255,0.08);padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text,#F8FAFC);">Pourquoi OVM et pas une grosse agence ? <span style="color:var(--cyan);font-size:1.3rem;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--font-body);font-weight:300;font-size:0.9rem;line-height:1.8;color:var(--text-muted,#94A3B8);">Un interlocuteur unique, du brief à la livraison. Pas de chef de projet qui dispatche à 5 juniors. Tarification juste, réactivité réelle, taux de fidélisation client proche de 100%. On ne bullshit pas.</p>
+        </details>
+        <details style="padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.1rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text,#F8FAFC);">Vous intervenez uniquement à Lille ? <span style="color:var(--cyan);font-size:1.3rem;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--font-body);font-weight:300;font-size:0.9rem;line-height:1.8;color:var(--text-muted,#94A3B8);">Non. Basé à Lambersart (Lille), on travaille avec des clients partout en France et à l'international. Le digital n'a pas de frontières — notre méthode non plus.</p>
+        </details>
+      </div>
     </div>
   </section>
 

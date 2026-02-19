@@ -1338,6 +1338,54 @@
 
       .cta-deco { font-size: 100px; }
     }
+
+    .service-link {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+    .service-link:hover { border-color: var(--orange); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .testimonial-card {
+      background: var(--gris-leger, #1A1A1A);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 32px;
+    }
+    .stars { color: var(--orange); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testimonial-text {
+      font-size: 0.92rem;
+      line-height: 1.7;
+      color: var(--blanc-casse, #F4F4F0);
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+    .testimonial-author strong {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--blanc, #FFF);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+    .testimonial-author span {
+      font-size: 0.78rem;
+      color: var(--gris, #888);
+      letter-spacing: 0.03em;
+    }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 
@@ -1481,8 +1529,9 @@
             <img src="https://ovm-communication.fr/wp-content/uploads/2016/05/Identite-visuelle-logo-300x300.png.webp"
                  alt="" aria-hidden="true">
           </div>
-          <h3 class="service-name">Identité Visuelle</h3>
+          <h3 class="service-name">ON CRÉE VOTRE IDENTITÉ.</h3>
           <p class="service-desc">Logos, charte graphique, univers de marque. Une identité qui vous ressemble et vous distingue durablement.</p>
+          <a href="#contact" class="service-link">En savoir plus →</a>
           <span class="service-more">En savoir plus →</span>
         </article>
 
@@ -1493,8 +1542,9 @@
             <img src="https://ovm-communication.fr/wp-content/uploads/2016/05/Site-Web-lille-300x300.png.webp"
                  alt="" aria-hidden="true">
           </div>
-          <h3 class="service-name">Création de Site Web</h3>
+          <h3 class="service-name">ON CONSTRUIT VOTRE SITE.</h3>
           <p class="service-desc">Interfaces élégantes, rapides, optimisées pour convertir. Du vitrine au e-commerce, avec une vraie attention à l'UX.</p>
+          <a href="#contact" class="service-link">En savoir plus →</a>
           <span class="service-more">En savoir plus →</span>
         </article>
 
@@ -1507,8 +1557,9 @@
               <path d="M 21 16 L 38 26 L 21 36 Z" fill="white"/>
             </svg>
           </div>
-          <h3 class="service-name">Motion Design</h3>
+          <h3 class="service-name">ON ANIME VOS IDÉES.</h3>
           <p class="service-desc">Vidéos animées, contenus dynamiques qui racontent votre histoire. Du teaser de marque à l'animation de données.</p>
+          <a href="#contact" class="service-link">En savoir plus →</a>
           <span class="service-more">En savoir plus →</span>
         </article>
 
@@ -1519,8 +1570,9 @@
             <img src="https://ovm-communication.fr/wp-content/uploads/2016/05/marketing-ovm-lille-300x300.png.webp"
                  alt="" aria-hidden="true">
           </div>
-          <h3 class="service-name">SEO & Référencement</h3>
+          <h3 class="service-name">ON VOUS FAIT TROUVER.</h3>
           <p class="service-desc">Être trouvé avant vos concurrents. Audit, stratégie éditoriale, optimisation technique — on joue sur le long terme.</p>
+          <a href="#contact" class="service-link">En savoir plus →</a>
           <span class="service-more">En savoir plus →</span>
         </article>
 
@@ -1536,8 +1588,9 @@
               <rect x="18" y="30" width="20" height="14" stroke="white" stroke-width="1.5"/>
             </svg>
           </div>
-          <h3 class="service-name">Print & Édition</h3>
+          <h3 class="service-name">ON MARQUE LES ESPRITS.</h3>
           <p class="service-desc">Flyers, catalogues, brochures, plaquettes. L'imprimé qui laisse une vraie trace et donne une image professionnelle irréprochable.</p>
+          <a href="#contact" class="service-link">En savoir plus →</a>
           <span class="service-more">En savoir plus →</span>
         </article>
 
@@ -1553,8 +1606,9 @@
               <line x1="15" y1="29" x2="37" y2="39" stroke="white" stroke-width="1" opacity="0.5"/>
             </svg>
           </div>
-          <h3 class="service-name">Réseaux Sociaux</h3>
+          <h3 class="service-name">ON PARLE DE VOUS.</h3>
           <p class="service-desc">Stratégie éditoriale, création de contenu, gestion de communauté. Une présence cohérente qui génère du business réel.</p>
+          <a href="#contact" class="service-link">En savoir plus →</a>
           <span class="service-more">En savoir plus →</span>
         </article>
 
@@ -1623,33 +1677,36 @@
   <!-- ============================================================
        TEMOIGNAGE
   ============================================================ -->
-  <section id="testimonial" aria-label="Témoignage client">
+  <section id="testimonial" aria-label="Témoignages clients">
     <div class="container">
-      <div class="testimonial-inner">
 
-        <span class="quote-glyph" aria-hidden="true">"</span>
-
-        <div class="testimonial-stars" aria-label="Note 5 étoiles sur 5">
-          <span class="star" aria-hidden="true">★</span>
-          <span class="star" aria-hidden="true">★</span>
-          <span class="star" aria-hidden="true">★</span>
-          <span class="star" aria-hidden="true">★</span>
-          <span class="star" aria-hidden="true">★</span>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Olivier a rapidement saisi mes souhaits et les a mis en place sans problème. Tout s'est déroulé de manière très fluide. Je recommande OVM à 100%."</p>
+          <div class="testimonial-author">
+            <strong>Marie L.</strong>
+            <span>Fondatrice, cabinet de coaching</span>
+          </div>
         </div>
-
-        <blockquote class="testimonial-quote reveal">
-          Olivier a rapidement saisi mes souhaits et les a mis en place sans problème.
-          Tout s'est déroulé de manière très fluide.
-          Je recommande OVM à 100%.
-        </blockquote>
-
-        <footer class="testimonial-author reveal reveal-delay-1">
-          <div class="author-sep" aria-hidden="true"></div>
-          <cite class="author-name">Marie L.</cite>
-          <span class="author-role">Fondatrice, cabinet de coaching professionnel</span>
-        </footer>
-
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"OVM a compris nos enjeux immédiatement. Honnête sur ce qui fonctionne ou non, Olivier livre exactement ce qu'il promet. Partenaire de confiance depuis 3 ans."</p>
+          <div class="testimonial-author">
+            <strong>Thomas B.</strong>
+            <span>Directeur commercial, PME industrielle</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-text">"Refonte complète de notre identité et de notre site. Le résultat dépasse nos attentes. L'équipe est réactive, créative et vraiment à l'écoute. Merci OVM !"</p>
+          <div class="testimonial-author">
+            <strong>Sophie M.</strong>
+            <span>CEO, startup tech Lilloise</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -1790,12 +1847,11 @@
       <div class="cta-inner">
 
         <h2 class="cta-title reveal" id="cta-title">
-          PRÊTS À<br>CHANGER<br>LA DONNE ?
+          ON S'EN PARLE ?
         </h2>
 
         <p class="cta-sub reveal reveal-delay-1">
-          Parlez-nous de votre projet. On vous répond sous 24h.<br>
-          Premier échange toujours offert.
+          Parlez-nous de votre projet. On vous répond sous 24h. Toujours.
         </p>
 
         <div class="cta-actions reveal reveal-delay-2">
@@ -1807,6 +1863,35 @@
 
         <p class="cta-note reveal reveal-delay-3">Réponse garantie sous 24h ouvrées</p>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section id="faq" style="background:var(--blanc-casse,#F4F4F0);padding:120px 0;">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-tag" style="color:var(--orange);">Questions fréquentes</p>
+        <h2 class="section-title" style="color:var(--noir,#080808);">ON RÉPOND<br><span style="color:var(--orange);">FRANCHEMENT.</span></h2>
+      </div>
+      <div class="faq-list" style="margin-top:56px;max-width:800px;">
+        <details class="faq-item" style="border-bottom:2px solid var(--noir,#080808);padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.4rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--noir,#080808);">Combien coûte une refonte de site ou d'identité visuelle ? <span>+</span></summary>
+          <p style="margin-top:16px;font-size:0.92rem;line-height:1.75;color:#555;">Chaque projet est unique. Nos tarifs sont transparents et sans surprise : nous vous remettons un devis détaillé sous 48h après notre premier échange. Nous travaillons avec des PME, des indépendants et des structures plus grandes — l'essentiel est que vous sachiez exactement ce que vous payez.</p>
+        </details>
+        <details class="faq-item" style="border-bottom:2px solid var(--noir,#080808);padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.4rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--noir,#080808);">Comment se passe le premier contact ? <span>+</span></summary>
+          <p style="margin-top:16px;font-size:0.92rem;line-height:1.75;color:#555;">Un appel de 30 minutes offert, sans engagement. On écoute votre projet, on vous pose les bonnes questions, et on vous donne déjà des pistes. Si le feeling est là, on vous envoie une proposition. Pas de prospection agressive, pas de relances tous les jours.</p>
+        </details>
+        <details class="faq-item" style="border-bottom:2px solid var(--noir,#080808);padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.4rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--noir,#080808);">Pourquoi choisir OVM plutôt qu'une grande agence ? <span>+</span></summary>
+          <p style="margin-top:16px;font-size:0.92rem;line-height:1.75;color:#555;">Parce qu'avec nous, vous avez un seul interlocuteur qui connaît votre projet de A à Z — pas un chef de projet qui délègue à 5 personnes différentes. On est agiles, honnêtes, et on ne gonfle pas les budgets. Notre taux de fidélisation client parle pour nous : proche de 100%.</p>
+        </details>
+        <details class="faq-item" style="padding:24px 0;">
+          <summary style="font-family:var(--font-display);font-size:1.4rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--noir,#080808);">Intervenez-vous uniquement à Lille ? <span>+</span></summary>
+          <p style="margin-top:16px;font-size:0.92rem;line-height:1.75;color:#555;">Non. OVM Communication est basée à Lambersart (Lille) mais travaille avec des clients partout en France. Grâce au digital, la distance n'est jamais un obstacle. Nos clients viennent de Paris, Lyon, Bordeaux et même de l'international.</p>
+        </details>
       </div>
     </div>
   </section>

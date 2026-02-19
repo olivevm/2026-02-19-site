@@ -590,6 +590,25 @@
     }
 
     /* ============================================================
+       SERVICE CTA LINK
+    ============================================================ */
+    .service-cta-link {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bordeaux);
+      text-decoration: none;
+      border-bottom: 1px solid var(--or);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .service-cta-link:hover { color: var(--or); }
+
+    /* ============================================================
        CAS CLIENT — fond blanc
     ============================================================ */
     .case {
@@ -810,6 +829,47 @@
       text-transform: uppercase;
       color: var(--gris-chaud);
     }
+
+    /* ============================================================
+       TÉMOIGNAGES GRID
+    ============================================================ */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .testi-card {
+      background: var(--cream);
+      border: 1px solid rgba(201,169,110,0.2);
+      border-left: 3px solid var(--or);
+      padding: 40px 32px;
+    }
+    .testi-stars { color: var(--or); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 20px; }
+    .testi-text {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--bordeaux);
+      margin-bottom: 28px;
+    }
+    .testi-author strong {
+      display: block;
+      font-family: var(--ff-body);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--noir-texte);
+    }
+    .testi-author span {
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      color: var(--gris-chaud);
+      letter-spacing: 0.05em;
+    }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
 
     /* ============================================================
        LOGOS CLIENTS — fond blanc
@@ -1435,8 +1495,8 @@
         <li class="svc r">
           <div class="svc__inner">
             <span class="svc__num">I</span>
-            <span class="svc__name">Identité visuelle</span>
-            <span class="svc__desc">Logo, charte graphique, univers de marque. Une identité construite pour durer et pour convaincre dès le premier regard.</span>
+            <span class="svc__name">Nous façonnons votre identité.</span>
+            <span class="svc__desc">Logo, charte graphique, univers de marque. Une identité construite pour durer et pour convaincre dès le premier regard.<br><a href="#contact" class="service-cta-link">Découvrir →</a></span>
             <span class="svc__tag">Branding</span>
           </div>
         </li>
@@ -1444,8 +1504,8 @@
         <li class="svc r d1">
           <div class="svc__inner">
             <span class="svc__num">II</span>
-            <span class="svc__name">Site web</span>
-            <span class="svc__desc">Vitrine, e-commerce, plateforme sur-mesure. Design et performance au service de votre croissance digitale.</span>
+            <span class="svc__name">Nous construisons votre présence en ligne.</span>
+            <span class="svc__desc">Vitrine, e-commerce, plateforme sur-mesure. Design et performance au service de votre croissance digitale.<br><a href="#contact" class="service-cta-link">Découvrir →</a></span>
             <span class="svc__tag">Digital</span>
           </div>
         </li>
@@ -1453,8 +1513,8 @@
         <li class="svc r d2">
           <div class="svc__inner">
             <span class="svc__num">III</span>
-            <span class="svc__name">Motion design</span>
-            <span class="svc__desc">Animation de marque, vidéo institutionnelle, motion graphics. Le mouvement au service de l'émotion et de la mémorisation.</span>
+            <span class="svc__name">Nous donnons vie à vos idées.</span>
+            <span class="svc__desc">Animation de marque, vidéo institutionnelle, motion graphics. Le mouvement au service de l'émotion et de la mémorisation.<br><a href="#contact" class="service-cta-link">Découvrir →</a></span>
             <span class="svc__tag">Vidéo</span>
           </div>
         </li>
@@ -1462,8 +1522,8 @@
         <li class="svc r">
           <div class="svc__inner">
             <span class="svc__num">IV</span>
-            <span class="svc__name">SEO &amp; Stratégie digitale</span>
-            <span class="svc__desc">Audit, optimisation technique, contenu éditorial. Être visible là où vos clients vous cherchent, quand ils vous cherchent.</span>
+            <span class="svc__name">Nous vous rendons visible.</span>
+            <span class="svc__desc">Audit, optimisation technique, contenu éditorial. Être visible là où vos clients vous cherchent, quand ils vous cherchent.<br><a href="#contact" class="service-cta-link">Découvrir →</a></span>
             <span class="svc__tag">Référencement</span>
           </div>
         </li>
@@ -1471,8 +1531,8 @@
         <li class="svc r d1">
           <div class="svc__inner">
             <span class="svc__num">V</span>
-            <span class="svc__name">Communication print</span>
-            <span class="svc__desc">Plaquettes, supports commerciaux, signalétique. La qualité tangible qui laisse une impression durable sur vos interlocuteurs.</span>
+            <span class="svc__name">Nous laissons une trace durable.</span>
+            <span class="svc__desc">Plaquettes, supports commerciaux, signalétique. La qualité tangible qui laisse une impression durable sur vos interlocuteurs.<br><a href="#contact" class="service-cta-link">Découvrir →</a></span>
             <span class="svc__tag">Print</span>
           </div>
         </li>
@@ -1480,8 +1540,8 @@
         <li class="svc r d2">
           <div class="svc__inner">
             <span class="svc__num">VI</span>
-            <span class="svc__name">Réseaux sociaux</span>
-            <span class="svc__desc">Stratégie éditoriale, création de contenus, pilotage. Une présence cohérente et engageante sur chaque canal.</span>
+            <span class="svc__name">Nous construisons votre communauté.</span>
+            <span class="svc__desc">Stratégie éditoriale, création de contenus, pilotage. Une présence cohérente et engageante sur chaque canal.<br><a href="#contact" class="service-cta-link">Découvrir →</a></span>
             <span class="svc__tag">Social</span>
           </div>
         </li>
@@ -1550,27 +1610,44 @@
 
 
   <!-- ============================================================
-       TÉMOIGNAGE
+       TÉMOIGNAGES
   ============================================================ -->
   <section class="testi" id="testimonial">
     <div class="wrap">
+
       <div class="testi__inner r">
-
         <div class="testi__ql">&ldquo;</div>
-
-        <blockquote class="testi__text">
-          Olivier a une capacité rare&nbsp;: il comprend immédiatement ce qu'on cherche
-          à exprimer, et le traduit avec une justesse remarquable.
-          C'est un partenaire de confiance.
-        </blockquote>
-
-        <div class="testi__rule"></div>
-
-        <p class="testi__author">Marie L. — Fondatrice, cabinet de coaching professionnel, Lille</p>
-
+        <p class="testi__text" style="font-size:clamp(13px,1.1vw,15px);font-style:normal;font-family:var(--ff-body);letter-spacing:0.22em;text-transform:uppercase;color:var(--or);margin-bottom:0;">Témoignages</p>
         <div class="testi__qr">&rdquo;</div>
-
       </div>
+
+      <div class="testimonials-grid">
+        <div class="testi-card r">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">« Olivier a rapidement saisi mes souhaits et les a mis en place sans problème. Une collaboration fluide, humaine et d'une grande qualité. Je recommande OVM sans réserve. »</p>
+          <div class="testi-author">
+            <strong>Marie L.</strong>
+            <span>Fondatrice, cabinet de coaching professionnel</span>
+          </div>
+        </div>
+        <div class="testi-card r d1">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">« OVM comprend immédiatement les enjeux. Olivier est transparent, précis, et livre exactement ce qu'il promet. Une agence rare qui allie exigence et humanité. »</p>
+          <div class="testi-author">
+            <strong>Thomas B.</strong>
+            <span>Directeur commercial, PME Nord de France</span>
+          </div>
+        </div>
+        <div class="testi-card r d2">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">« Refonte complète de notre identité. Le résultat est au-delà de nos attentes. Réactivité, créativité, écoute — OVM coche toutes les cases. Un vrai partenaire de croissance. »</p>
+          <div class="testi-author">
+            <strong>Sophie M.</strong>
+            <span>CEO, entreprise innovante, Lille</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1702,7 +1779,7 @@
         </h2>
 
         <p class="cta-final__subtitle r d2">
-          Rencontrons-nous. Le premier échange est offert, sans engagement.
+          Rencontrons-nous. Le premier échange est offert, sans engagement, sans pression.
         </p>
 
         <div class="cta-final__actions r d3">
@@ -1714,6 +1791,35 @@
           </a>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       FAQ
+  ============================================================ -->
+  <section id="faq" style="background:var(--cream-2,#F2EDE6);padding:160px 0;">
+    <div class="container" style="max-width:800px;margin:0 auto;padding:0 40px;">
+      <p style="font-family:var(--ff-body);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--or,#C9A96E);margin-bottom:16px;">Questions fréquentes</p>
+      <h2 style="font-family:var(--ff-display);font-weight:300;font-size:clamp(2.5rem,5vw,4rem);color:var(--bordeaux,#6B2737);margin-bottom:64px;line-height:1.2;">Ce que nos clients<br>nous demandent.</h2>
+      <div>
+        <details style="border-bottom:1px solid var(--or,#C9A96E);padding:28px 0;">
+          <summary style="font-family:var(--ff-display);font-size:1.2rem;font-weight:400;cursor:pointer;list-style:none;display:flex;justify-content:space-between;color:var(--bordeaux,#6B2737);">Quels sont vos tarifs ? <span style="font-size:1.5rem;font-weight:300;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--ff-body);font-weight:300;font-size:0.92rem;line-height:1.8;color:var(--gris-chaud,#8B7D75);">Nos tarifs sont transparents et adaptés à chaque projet. Nous vous remettons un devis précis sous 48h après notre échange découverte. Pas de surprise, pas de ligne cachée — c'est notre engagement depuis 2012.</p>
+        </details>
+        <details style="border-bottom:1px solid var(--or,#C9A96E);padding:28px 0;">
+          <summary style="font-family:var(--ff-display);font-size:1.2rem;font-weight:400;cursor:pointer;list-style:none;display:flex;justify-content:space-between;color:var(--bordeaux,#6B2737);">Comment se déroule le premier échange ? <span style="font-size:1.5rem;font-weight:300;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--ff-body);font-weight:300;font-size:0.92rem;line-height:1.8;color:var(--gris-chaud,#8B7D75);">Un entretien de découverte de 30 minutes, offert et sans engagement. Nous prenons le temps de comprendre votre projet, vos valeurs et vos objectifs avant de formuler toute proposition.</p>
+        </details>
+        <details style="border-bottom:1px solid var(--or,#C9A96E);padding:28px 0;">
+          <summary style="font-family:var(--ff-display);font-size:1.2rem;font-weight:400;cursor:pointer;list-style:none;display:flex;justify-content:space-between;color:var(--bordeaux,#6B2737);">Pourquoi OVM plutôt qu'une grande agence ? <span style="font-size:1.5rem;font-weight:300;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--ff-body);font-weight:300;font-size:0.92rem;line-height:1.8;color:var(--gris-chaud,#8B7D75);">Un interlocuteur unique qui connaît votre projet de bout en bout. Une tarification juste, une réactivité exemplaire, et un engagement total. Notre taux de fidélisation client proche de 100% témoigne de notre façon de travailler.</p>
+        </details>
+        <details style="padding:28px 0;">
+          <summary style="font-family:var(--ff-display);font-size:1.2rem;font-weight:400;cursor:pointer;list-style:none;display:flex;justify-content:space-between;color:var(--bordeaux,#6B2737);">Intervenez-vous partout en France ? <span style="font-size:1.5rem;font-weight:300;">+</span></summary>
+          <p style="margin-top:16px;font-family:var(--ff-body);font-weight:300;font-size:0.92rem;line-height:1.8;color:var(--gris-chaud,#8B7D75);">OVM Communication est basée à Lambersart (Lille) et accompagne des clients partout en France, grâce au travail à distance. Nous intervenons également à l'international pour des projets spécifiques.</p>
+        </details>
       </div>
     </div>
   </section>
