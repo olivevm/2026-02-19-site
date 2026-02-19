@@ -244,7 +244,7 @@
     .hero-title {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(64px, 9vw, 140px);
+      font-size: clamp(44px, 5.5vw, 84px);
       line-height: 0.92;
       letter-spacing: -0.03em;
       color: #fff;
@@ -420,7 +420,7 @@
       display: block;
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(56px, 8vw, 120px);
+      font-size: clamp(36px, 5vw, 68px);
       line-height: 0.9;
       letter-spacing: -0.03em;
     }
@@ -477,7 +477,7 @@
     .video-quote {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(28px, 3.5vw, 44px);
+      font-size: clamp(22px, 2.5vw, 36px);
       line-height: 1.2;
       color: #fff;
       margin-bottom: 20px;
@@ -522,7 +522,7 @@
     .stat-number {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(56px, 7vw, 100px);
+      font-size: clamp(38px, 4.5vw, 68px);
       line-height: 1;
       color: #fff;
       letter-spacing: -0.03em;
@@ -595,7 +595,7 @@
     .feature-title {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(36px, 4vw, 64px);
+      font-size: clamp(26px, 3vw, 48px);
       line-height: 1.05;
       letter-spacing: -0.025em;
       margin-bottom: 24px;
@@ -668,7 +668,7 @@
     .feature-fullbleed-title {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(40px, 5vw, 80px);
+      font-size: clamp(28px, 3.5vw, 52px);
       line-height: 1.0;
       letter-spacing: -0.03em;
       color: #fff;
@@ -696,7 +696,7 @@
       text-align: center;
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(24px, 2.5vw, 36px);
+      font-size: clamp(20px, 2vw, 30px);
       letter-spacing: -0.02em;
       margin-bottom: 52px;
     }
@@ -797,7 +797,7 @@
     .case-study-title {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(32px, 4vw, 56px);
+      font-size: clamp(24px, 2.8vw, 44px);
       letter-spacing: -0.025em;
       margin-bottom: 36px;
     }
@@ -850,7 +850,7 @@
     .section-title {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(36px, 4.5vw, 64px);
+      font-size: clamp(28px, 3.2vw, 48px);
       letter-spacing: -0.03em;
       line-height: 1.05;
     }
@@ -999,7 +999,7 @@
     .process-number {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(56px, 6vw, 80px);
+      font-size: clamp(36px, 4vw, 56px);
       line-height: 1;
       background: var(--gradient-text);
       -webkit-background-clip: text;
@@ -1048,7 +1048,7 @@
       cursor: pointer;
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: clamp(17px, 1.8vw, 21px);
+      font-size: clamp(15px, 1.5vw, 18px);
       list-style: none;
       user-select: none;
     }
@@ -1078,6 +1078,29 @@
       max-width: 720px;
     }
 
+    .faq-answer {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.65);
+      padding-bottom: 28px;
+      max-width: 720px;
+    }
+    .faq-answer p { margin: 0; }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 0;
+      cursor: pointer;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(15px, 1.5vw, 18px);
+      list-style: none;
+      user-select: none;
+    }
+    .faq-question::-webkit-details-marker { display: none; }
+
     /* ================================================================
        CTA FINAL
     ================================================================ */
@@ -1097,7 +1120,7 @@
     .cta-title {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(48px, 7vw, 100px);
+      font-size: clamp(36px, 4.5vw, 68px);
       line-height: 0.95;
       letter-spacing: -0.035em;
       margin-bottom: 28px;
@@ -1230,8 +1253,8 @@
       .services-grid { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: 1fr; }
       .cta-actions { flex-direction: column; align-items: center; }
-      .hero-title { font-size: clamp(48px, 12vw, 80px); }
-      .statement-line { font-size: clamp(44px, 11vw, 80px); }
+      .hero-title { font-size: clamp(36px, 9vw, 64px); }
+      .statement-line { font-size: clamp(34px, 8vw, 60px); }
       .services-section, .testimonials-section, .process-section, .faq-section { padding: 64px 20px; }
       .feature-fullbleed-content { padding: 40px 24px; }
       .video-content { left: 24px; bottom: 40px; }
@@ -1240,6 +1263,90 @@
       .metrics-strip { flex-direction: column; }
       .metric { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
       .metric:last-child { border-bottom: none; }
+    }
+
+    /* ================================================================
+       TESTIMONIALS — Google Avis
+    ================================================================ */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    @media (max-width: 1024px) { .testi-grid { grid-template-columns: 1fr; max-width: 640px; margin-left: auto; margin-right: auto; } }
+
+    .testi-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 28px;
+      transition: border-color 0.3s;
+    }
+    .testi-card:hover { border-color: rgba(255,255,255,0.15); }
+
+    /* Google Badge */
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 40px;
+      padding: 10px 20px;
+      margin-top: 20px;
+      text-decoration: none;
+      transition: background var(--t), border-color var(--t);
+    }
+    .google-badge:hover { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.18); }
+    .google-badge-rating { display: flex; align-items: center; gap: 8px; }
+    .google-badge-score { font-family: var(--font-display); font-size: 18px; font-weight: 800; color: var(--text); }
+    .google-badge-stars { color: #FBBC05; font-size: 13px; letter-spacing: 1px; }
+    .google-badge-count { font-size: 13px; color: var(--text-muted); }
+
+    /* Testimonial cards update */
+    .testi-header { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--gradient); display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 16px; font-weight: 800; color: #fff;
+      flex-shrink: 0;
+    }
+    .testi-meta { flex: 1; }
+    .testi-name { display: block; font-size: 14px; font-weight: 600; color: var(--text); }
+    .testi-role { display: block; font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+    .testi-google-icon { flex-shrink: 0; }
+    .testi-stars { color: #FBBC05; font-size: 14px; letter-spacing: 2px; margin-bottom: 12px; }
+    .testi-quote { font-size: 15px; line-height: 1.65; color: rgba(255,255,255,0.82); font-style: italic; border-left: none; padding: 0; margin: 0; }
+    .testi-cta { text-align: center; margin-top: 48px; }
+
+    /* Case study description */
+    .case-study-desc {
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.7);
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+
+    /* Section eyebrow */
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* VIF method */
+    .hero-vif { display: flex; gap: 8px; flex-wrap: wrap; }
+    .vif-pill {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text-muted); border: 1px solid rgba(255,255,255,0.12);
+      padding: 4px 12px; border-radius: 20px; background: rgba(255,255,255,0.04);
     }
   </style>
 </head>
@@ -1272,6 +1379,13 @@
 
     <div class="hero-content">
       <div class="hero-badge">✦ Agence B2B · Lille · Depuis 2012</div>
+
+      <!-- VIF method -->
+      <div class="hero-vif reveal" style="margin-bottom: 12px;">
+        <span class="vif-pill">V · Visible</span>
+        <span class="vif-pill">I · Impactante</span>
+        <span class="vif-pill">F · Fiable</span>
+      </div>
 
       <h1 class="hero-title">
         <span class="line">La communication</span>
@@ -1387,13 +1501,12 @@
            alt="Projet Docteur DSI — Identité visuelle" loading="lazy" />
     </div>
     <div class="feature-text">
-      <span class="category-pill reveal">Identité visuelle</span>
-      <h2 class="feature-title reveal reveal-d1">On construit votre marque de A à Z.</h2>
+      <span class="category-pill reveal">Identité &amp; Communication 360°</span>
+      <h2 class="feature-title reveal reveal-d1">Docteur DSI — de l'identité à la conversion.</h2>
       <p class="feature-desc reveal reveal-d2">
-        Logos, chartes graphiques, systèmes visuels cohérents.
-        Votre identité conçue pour traverser le temps et marquer les esprits.
+        Refonte stratégique complète : identité visuelle, site web, motion design et stratégie digitale. Un projet 360° livré en 3 mois pour cette plateforme de solutions DSI.
       </p>
-      <a href="#contact" class="feature-link reveal reveal-d3">Explorer l'identité visuelle →</a>
+      <a href="#contact" class="feature-link reveal reveal-d3">Voir le projet →</a>
     </div>
   </section>
 
@@ -1402,13 +1515,12 @@
   ================================================================ -->
   <section class="feature feature--img-right" style="background: var(--bg);">
     <div class="feature-text">
-      <span class="category-pill reveal">Sites web &amp; Digital</span>
-      <h2 class="feature-title reveal reveal-d1">On crée votre présence numérique.</h2>
+      <span class="category-pill reveal">E-commerce &amp; Branding</span>
+      <h2 class="feature-title reveal reveal-d1">Les Pas Petits — un e-commerce qui convertit.</h2>
       <p class="feature-desc reveal reveal-d2">
-        Sites WordPress performants, SEO intégré, UX conçue pour convertir.
-        Votre vitrine digitale, pensée pour vos clients B2B.
+        Identité visuelle, site e-commerce WordPress et stratégie marketing intégrée pour cette boutique en ligne lilloise. Design pensé pour l'expérience client B2C.
       </p>
-      <a href="#contact" class="feature-link reveal reveal-d3">Voir nos créations web →</a>
+      <a href="#contact" class="feature-link reveal reveal-d3">Voir le projet →</a>
     </div>
     <div class="feature-img">
       <img src="https://ovm-communication.fr/wp-content/uploads/2023/12/web-les-pas-petits-1-1120x747.jpg"
@@ -1423,11 +1535,10 @@
     <div class="feature-fullbleed-bg"></div>
     <div class="feature-fullbleed-overlay"></div>
     <div class="feature-fullbleed-content">
-      <span class="category-pill reveal">Branding &amp; Motion</span>
-      <h2 class="feature-fullbleed-title reveal reveal-d1">On anime votre univers de marque.</h2>
+      <span class="category-pill reveal">Site vitrine &amp; Univers de marque</span>
+      <h2 class="feature-fullbleed-title reveal reveal-d1">Écuries de Belley — l'élégance au cœur du digital.</h2>
       <p class="feature-fullbleed-desc reveal reveal-d2">
-        Motion design, print, social media. Chaque point de contact
-        devient une expérience mémorable.
+        Site vitrine pour cet établissement équestre d'exception. Design épuré, photographique et immersif pour mettre en valeur un lieu hors du commun.
       </p>
     </div>
   </section>
@@ -1517,22 +1628,23 @@
     <div class="case-study-overlay"></div>
     <div class="case-study-content">
       <span class="badge reveal">Étude de cas</span>
-      <h2 class="case-study-title reveal reveal-d1">Docteur DSI — Identité digitale</h2>
+      <h2 class="case-study-title reveal reveal-d1">Biospringer by Lesaffre — rebranding digital</h2>
       <div class="metrics-strip reveal reveal-d2">
         <div class="metric">
-          <div class="metric-value">+40%</div>
-          <div class="metric-label">de visibilité</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">Site + Branding</div>
+          <div class="metric-value">Rebranding web</div>
           <div class="metric-label">périmètre complet</div>
         </div>
         <div class="metric">
-          <div class="metric-value">6 semaines</div>
+          <div class="metric-value">Collaboration Agence Babel</div>
+          <div class="metric-label">partenariat agences</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">Livré en temps record</div>
           <div class="metric-label">délai de livraison</div>
         </div>
       </div>
-      <a href="#contact" class="btn-primary reveal reveal-d3">Voir l'étude de cas →</a>
+      <p class="case-study-desc reveal reveal-d3">Refonte du site de Biospringer by Lesaffre en collaboration avec l'Agence Babel. Un univers "food lovers" intégré avec précision pour cette filiale du groupe Lesaffre.</p>
+      <a href="#contact" class="btn-primary reveal reveal-d4">Voir l'étude de cas →</a>
     </div>
   </section>
 
@@ -1653,54 +1765,73 @@
   </section>
 
   <!-- ================================================================
-       TESTIMONIALS
+       TESTIMONIALS — Avis Google
   ================================================================ -->
-  <section class="testimonials-section">
-    <div class="section-header">
-      <h2 class="section-title reveal">Ce que disent nos clients.</h2>
-    </div>
-    <div class="testimonials-grid">
+  <section class="testimonials-section" id="testimonial" aria-labelledby="testi-title">
+    <div class="container">
 
-      <div class="testimonial-card reveal">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
-          <span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-quote">
-          "OVM a su comprendre notre univers technique et le transformer en une identité visuelle forte et professionnelle. Le résultat dépasse nos attentes."
-        </p>
-        <div>
-          <div class="testimonial-author-name">Sébastien M.</div>
-          <div class="testimonial-author-role">Directeur Général · Docteur DSI</div>
-        </div>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Avis clients</span>
+        <h2 class="section-title" id="testi-title">Ce que disent nos clients.</h2>
+        <!-- Google Rating Badge -->
+        <a href="https://g.page/r/CQEeNHPFcVxZEBM/review" target="_blank" rel="noopener" class="google-badge reveal">
+          <svg class="google-g" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <div class="google-badge-rating">
+            <span class="google-badge-score">5,0</span>
+            <div class="google-badge-stars" aria-label="5 étoiles sur 5">★★★★★</div>
+            <span class="google-badge-count">32 avis Google</span>
+          </div>
+        </a>
       </div>
 
-      <div class="testimonial-card reveal reveal-d1">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
-          <span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-quote">
-          "Une équipe à l'écoute, réactive et vraiment créative. Notre site web a transformé notre acquisition client. On recommande sans hésiter."
-        </p>
-        <div>
-          <div class="testimonial-author-name">Marie-Laure D.</div>
-          <div class="testimonial-author-role">Fondatrice · Les Pas Petits</div>
-        </div>
+      <div class="testi-grid">
+
+        <article class="testi-card reveal">
+          <div class="testi-header">
+            <div class="testi-avatar" aria-hidden="true">E</div>
+            <div class="testi-meta">
+              <strong class="testi-name">Etienne de Belloy</strong>
+              <span class="testi-role">Local Guide · il y a 1 semaine</span>
+            </div>
+            <svg class="testi-google-icon" viewBox="0 0 24 24" width="18" height="18" aria-label="Avis Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84z"/></svg>
+          </div>
+          <div class="testi-stars" aria-hidden="true">★★★★★</div>
+          <blockquote class="testi-quote">"C'est toujours un plaisir de travailler avec OVM Communication et Olivier, qui propose des solutions d'accompagnement adaptées et d'excellents conseils, avec une grande disponibilité — ce qui est très appréciable !"</blockquote>
+        </article>
+
+        <article class="testi-card reveal reveal-d1">
+          <div class="testi-header">
+            <div class="testi-avatar" aria-hidden="true">P</div>
+            <div class="testi-meta">
+              <strong class="testi-name">Pierre Benoit Casterman</strong>
+              <span class="testi-role">Local Guide · Partenaire depuis 15 ans</span>
+            </div>
+            <svg class="testi-google-icon" viewBox="0 0 24 24" width="18" height="18" aria-label="Avis Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84z"/></svg>
+          </div>
+          <div class="testi-stars" aria-hidden="true">★★★★★</div>
+          <blockquote class="testi-quote">"Le temps parle de lui-même — partenaire d'OVM depuis près de 15 ans, pas une fois l'envie d'aller voir l'herbe ailleurs. Une relation de confiance rare et précieuse."</blockquote>
+        </article>
+
+        <article class="testi-card reveal reveal-d2">
+          <div class="testi-header">
+            <div class="testi-avatar" aria-hidden="true">L</div>
+            <div class="testi-meta">
+              <strong class="testi-name">Lena Tayar</strong>
+              <span class="testi-role">Techteam · 2 ans de collaboration</span>
+            </div>
+            <svg class="testi-google-icon" viewBox="0 0 24 24" width="18" height="18" aria-label="Avis Google"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84z"/></svg>
+          </div>
+          <div class="testi-stars" aria-hidden="true">★★★★★</div>
+          <blockquote class="testi-quote">"J'ai eu le plaisir de travailler avec Olivier pendant près de deux ans sur la refonte et l'évolution du site web de Techteam. Un partenaire fiable, à l'écoute, qui comprend vraiment les enjeux business."</blockquote>
+        </article>
+
       </div>
 
-      <div class="testimonial-card reveal reveal-d2">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span>
-          <span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-quote">
-          "Collaboration au top depuis plus de 5 ans. OVM est bien plus qu'un prestataire — c'est un partenaire stratégique qui comprend nos enjeux B2B."
-        </p>
-        <div>
-          <div class="testimonial-author-name">Thomas B.</div>
-          <div class="testimonial-author-role">Directeur Marketing · Écuries de Belley</div>
-        </div>
+      <div class="testi-cta reveal">
+        <a href="https://g.page/r/CQEeNHPFcVxZEBM/review" target="_blank" rel="noopener" class="btn-ghost">
+          Voir les 32 avis sur Google
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+        </a>
       </div>
 
     </div>
@@ -1752,45 +1883,25 @@
     </div>
     <div class="faq-list">
 
-      <details>
-        <summary>
-          Travaillez-vous uniquement avec des entreprises B2B ?
-          <span class="faq-chevron" aria-hidden="true"></span>
-        </summary>
-        <p class="faq-body">
-          Notre cœur de métier, c'est le B2B : PME, ETI, cabinets de conseil, industriels, services aux entreprises. On connaît vos cycles de vente, vos interlocuteurs et vos enjeux. Certains projets B2C nous intéressent aussi — contactez-nous pour en discuter.
-        </p>
-      </details>
+        <details class="faq-item">
+          <summary class="faq-question">Quels types d'entreprises accompagnez-vous ?<span class="faq-chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Nous travaillons avec des TPE, PME et grands comptes — de la startup lilloise à des groupes comme Lesaffre ou Fayat. Notre approche agile s'adapte à toutes les tailles. Ce qui compte : votre ambition et votre envie de bien faire.</p></div>
+        </details>
 
-      <details>
-        <summary>
-          Quel est votre délai de réalisation habituel ?
-          <span class="faq-chevron" aria-hidden="true"></span>
-        </summary>
-        <p class="faq-body">
-          Pour une identité visuelle complète, comptez 4 à 6 semaines. Pour un site web, 6 à 10 semaines selon la complexité. On définit ensemble un planning réaliste dès le brief et on s'y tient.
-        </p>
-      </details>
+        <details class="faq-item">
+          <summary class="faq-question">Comment se déroule le démarrage d'un projet ?<span class="faq-chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Tout commence par un brief découverte gratuit de 30 minutes. On écoute, on comprend vos enjeux, on pose les bonnes questions. Ensuite : proposition, devis, validation et production. Pas de mauvaise surprise.</p></div>
+        </details>
 
-      <details>
-        <summary>
-          Sous-traitez-vous une partie des projets ?
-          <span class="faq-chevron" aria-hidden="true"></span>
-        </summary>
-        <p class="faq-body">
-          Non. Tout est fait en interne : direction artistique, design, développement web, motion design, rédaction, SEO. Un interlocuteur unique, une cohérence garantie du brief à la livraison.
-        </p>
-      </details>
+        <details class="faq-item">
+          <summary class="faq-question">Pourquoi choisir OVM plutôt qu'une grande agence ?<span class="faq-chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Parce qu'avec OVM, vous parlez directement à Olivier — pas à un commercial puis à un chef de projet puis à un stagiaire. Réactivité, transparence et tarification juste. C'est notre modèle depuis 2012. Résultat : ~100% de taux de fidélisation.</p></div>
+        </details>
 
-      <details>
-        <summary>
-          Comment se passe le premier contact ?
-          <span class="faq-chevron" aria-hidden="true"></span>
-        </summary>
-        <p class="faq-body">
-          On commence par un appel découverte gratuit de 30 minutes pour cerner vos besoins. Ensuite on prépare une proposition détaillée avec les livrables, le planning et le budget. Sans engagement.
-        </p>
-      </details>
+        <details class="faq-item">
+          <summary class="faq-question">Intervenez-vous au-delà de Lille ?<span class="faq-chevron" aria-hidden="true">↓</span></summary>
+          <div class="faq-answer"><p>Absolument. Basés à Lambersart, nous intervenons dans toute la région Hauts-de-France et à distance partout en France. Certains de nos clients sont en Île-de-France, en Bretagne ou à l'international.</p></div>
+        </details>
 
     </div>
   </section>
