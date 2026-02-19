@@ -7,32 +7,34 @@
   <meta name="description" content="OVM Communication, agence créative à Lille depuis 2012. Identité visuelle, sites web, motion design, SEO. Un interlocuteur unique, une exigence constante." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="icon" href="https://ovm-communication.fr/wp-content/uploads/2022/01/favicon-90x90.png">
 
   <style>
     /* ============================================================
        VARIABLES & RESET
     ============================================================ */
     :root {
-      --cream:        #FAF7F2;
-      --cream-dark:   #F0EBE2;
-      --white:        #FFFFFF;
-      --bordeaux:     #6B2737;
-      --bordeaux-dark:#4E1B27;
-      --gold:         #C9A96E;
-      --gold-light:   #D9BC8A;
-      --text:         #1A0F0A;
-      --text-light:   #6B5B50;
-      --text-muted:   #9C8878;
-      --border:       rgba(201,169,110,0.3);
+      --cream:          #FAF7F2;
+      --cream-2:        #F2EDE6;
+      --bordeaux:       #6B2737;
+      --bordeaux-fonce: #4A1A26;
+      --bordeaux-footer:#2A0F18;
+      --or:             #C9A96E;
+      --noir-texte:     #1A0F0A;
+      --gris-chaud:     #8B7D75;
+      --white:          #FFFFFF;
+      --border-or:      rgba(201,169,110,0.25);
 
       --ff-display: 'Cormorant Garamond', Georgia, serif;
       --ff-body:    'Jost', system-ui, sans-serif;
 
-      --section-pad: 140px;
-      --section-pad-sm: 80px;
+      --pad: 160px;
+      --pad-md: 100px;
+      --pad-sm: 72px;
 
-      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --dur: 0.5s;
     }
 
     *, *::before, *::after {
@@ -48,105 +50,89 @@
 
     body {
       background-color: var(--cream);
-      color: var(--text);
+      color: var(--noir-texte);
       font-family: var(--ff-body);
       font-weight: 300;
       line-height: 1.7;
       overflow-x: hidden;
     }
 
-    img { display: block; max-width: 100%; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
+    img  { display: block; max-width: 100%; }
+    a    { text-decoration: none; color: inherit; }
+    ul   { list-style: none; }
 
     /* ============================================================
-       UTILITIES
+       LAYOUT
     ============================================================ */
-    .container {
-      max-width: 1280px;
+    .wrap {
+      max-width: 1320px;
       margin: 0 auto;
-      padding: 0 48px;
+      padding: 0 64px;
     }
 
-    .gold-rule {
-      display: inline-block;
-      width: 40px;
-      height: 1px;
-      background: var(--gold);
-      vertical-align: middle;
-    }
-
-    /* Section-left gold accent line */
-    .section-mark {
-      position: relative;
-    }
-    .section-mark::before {
-      content: '';
-      position: absolute;
-      left: -24px;
-      top: 0;
-      bottom: 0;
-      width: 1.5px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-    }
-
-    /* Scroll reveal */
-    .reveal {
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .r {
       opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
     }
-    .reveal.visible {
+    .r.in {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    .r.d1 { transition-delay: 0.1s; }
+    .r.d2 { transition-delay: 0.2s; }
+    .r.d3 { transition-delay: 0.3s; }
+    .r.d4 { transition-delay: 0.4s; }
+    .r.d5 { transition-delay: 0.55s; }
 
     /* ============================================================
        NAVIGATION
     ============================================================ */
     .nav {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: 28px 0;
-      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 30px 0;
+      transition: background var(--dur) var(--ease),
+                  padding var(--dur) var(--ease),
+                  box-shadow var(--dur) var(--ease);
     }
 
     .nav.scrolled {
-      background: rgba(250, 247, 242, 0.96);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(250,247,242,0.97);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 18px 0;
-      box-shadow: 0 1px 0 var(--border);
+      box-shadow: 0 1px 0 var(--border-or);
     }
 
     .nav__inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 32px;
+      gap: 24px;
     }
 
     .nav__logo {
-      font-family: var(--ff-display);
-      font-weight: 500;
-      font-size: 22px;
-      color: var(--bordeaux);
-      letter-spacing: 0.02em;
-      white-space: nowrap;
       flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .nav__logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+      /* slight darkening so logo is legible on transparent nav */
+      filter: brightness(0.92);
     }
 
     .nav__links {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 44px;
     }
 
     .nav__links a {
@@ -155,44 +141,38 @@
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--noir-texte);
       position: relative;
       padding-bottom: 2px;
-      transition: color var(--transition);
+      transition: color var(--dur) var(--ease);
     }
 
     .nav__links a::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width var(--transition);
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--or);
+      transition: width var(--dur) var(--ease);
     }
 
-    .nav__links a:hover {
-      color: var(--bordeaux);
-    }
-    .nav__links a:hover::after {
-      width: 100%;
-    }
+    .nav__links a:hover { color: var(--bordeaux); }
+    .nav__links a:hover::after { width: 100%; }
 
     .nav__cta {
       font-family: var(--ff-body);
       font-weight: 300;
-      font-size: 12px;
-      letter-spacing: 0.1em;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--bordeaux);
-      border: 1px solid var(--bordeaux);
-      padding: 11px 22px;
+      border: 1px solid rgba(107,39,55,0.45);
+      padding: 11px 24px;
+      flex-shrink: 0;
       position: relative;
       overflow: hidden;
-      transition: color var(--transition);
+      transition: color var(--dur) var(--ease);
       white-space: nowrap;
-      flex-shrink: 0;
     }
 
     .nav__cta::before {
@@ -201,62 +181,58 @@
       inset: 0;
       background: var(--bordeaux);
       transform: translateX(-101%);
-      transition: transform var(--transition);
+      transition: transform var(--dur) var(--ease);
     }
 
-    .nav__cta:hover {
-      color: var(--cream);
-    }
-    .nav__cta:hover::before {
-      transform: translateX(0);
-    }
+    .nav__cta:hover { color: var(--cream); }
+    .nav__cta:hover::before { transform: translateX(0); }
 
-    .nav__cta span {
-      position: relative;
-      z-index: 1;
-    }
+    .nav__cta span { position: relative; z-index: 1; }
 
-    .nav__hamburger {
+    .nav__burger {
       display: none;
       flex-direction: column;
       gap: 5px;
-      cursor: pointer;
-      padding: 4px;
       background: none;
       border: none;
+      cursor: pointer;
+      padding: 4px;
     }
 
-    .nav__hamburger span {
+    .nav__burger span {
       display: block;
-      width: 24px;
-      height: 1px;
+      width: 24px; height: 1px;
       background: var(--bordeaux);
-      transition: transform var(--transition), opacity var(--transition);
+      transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
     }
 
     /* ============================================================
-       HERO
+       HERO — 100vh centré
     ============================================================ */
     .hero {
       min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      padding-top: 120px;
+      justify-content: center;
       position: relative;
       overflow: hidden;
+      text-align: center;
+      padding: 120px 64px 100px;
     }
 
-    /* Watermark "O" */
+    /* Watermark O */
     .hero::before {
       content: 'O';
       font-family: var(--ff-display);
       font-weight: 300;
-      font-size: 40vw;
-      color: #F0EBE2;
+      font-size: 45vw;
+      color: var(--bordeaux);
+      opacity: 0.04;
       position: absolute;
-      right: -8vw;
       top: 50%;
-      transform: translateY(-55%);
+      left: 50%;
+      transform: translate(-50%, -50%);
       line-height: 1;
       pointer-events: none;
       user-select: none;
@@ -264,43 +240,41 @@
     }
 
     .hero__inner {
-      display: grid;
-      grid-template-columns: 60fr 40fr;
-      gap: 80px;
-      align-items: center;
       position: relative;
       z-index: 1;
+      max-width: 1000px;
       width: 100%;
     }
 
-    .hero__left {
-      padding: var(--section-pad) 0;
-    }
-
     .hero__eyebrow {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 16px;
-      margin-bottom: 40px;
-    }
-
-    .hero__eyebrow-text {
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 11px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--or);
+      margin-bottom: 48px;
+    }
+
+    .hero__eyebrow::before,
+    .hero__eyebrow::after {
+      content: '';
+      width: 32px; height: 1px;
+      background: var(--or);
+      opacity: 0.7;
     }
 
     .hero__title {
       font-family: var(--ff-display);
       font-weight: 300;
-      font-size: clamp(54px, 6.5vw, 96px);
-      line-height: 1.08;
+      font-size: clamp(60px, 7.5vw, 112px);
+      line-height: 1.06;
       letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 36px;
+      color: var(--noir-texte);
+      margin-bottom: 40px;
     }
 
     .hero__title em {
@@ -313,197 +287,128 @@
       font-weight: 300;
       font-size: 18px;
       line-height: 1.85;
-      color: var(--text-light);
-      max-width: 520px;
-      margin-bottom: 56px;
+      color: var(--gris-chaud);
+      max-width: 600px;
+      margin: 0 auto 60px;
     }
 
     .hero__actions {
       display: flex;
       align-items: center;
-      gap: 36px;
+      justify-content: center;
+      gap: 40px;
       flex-wrap: wrap;
+      margin-bottom: 72px;
     }
 
     .btn-primary {
       font-family: var(--ff-body);
       font-weight: 400;
-      font-size: 13px;
-      letter-spacing: 0.08em;
+      font-size: 12px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--cream);
       background: var(--bordeaux);
-      padding: 18px 36px;
+      padding: 18px 40px;
+      display: inline-block;
       position: relative;
       overflow: hidden;
-      transition: color var(--transition);
-      display: inline-block;
+      transition: color var(--dur) var(--ease);
     }
 
     .btn-primary::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: var(--gold);
+      background: var(--bordeaux-fonce);
       transform: translateY(101%);
-      transition: transform var(--transition);
+      transition: transform var(--dur) var(--ease);
     }
 
-    .btn-primary:hover {
-      color: var(--text);
-    }
-    .btn-primary:hover::before {
-      transform: translateY(0);
-    }
-
-    .btn-primary span {
-      position: relative;
-      z-index: 1;
-    }
+    .btn-primary:hover::before { transform: translateY(0); }
+    .btn-primary span { position: relative; z-index: 1; }
 
     .btn-ghost {
       font-family: var(--ff-body);
       font-weight: 300;
-      font-size: 15px;
-      letter-spacing: 0.04em;
+      font-size: 16px;
+      letter-spacing: 0.02em;
       color: var(--bordeaux);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      transition: gap var(--transition);
+      gap: 12px;
+      transition: gap var(--dur) var(--ease);
     }
 
-    .btn-ghost:hover {
-      gap: 18px;
-    }
+    .btn-ghost:hover { gap: 20px; }
 
     .btn-ghost .arrow {
       display: inline-block;
-      transition: transform var(--transition);
+      transition: transform var(--dur) var(--ease);
     }
-
-    .btn-ghost:hover .arrow {
-      transform: translateX(4px);
-    }
-
-    .hero__right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 0;
-    }
-
-    /* Abstract geometric composition */
-    .hero__geo {
-      position: relative;
-      width: 340px;
-      height: 340px;
-    }
-
-    .hero__geo-outer {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1.5px solid var(--bordeaux);
-    }
-
-    .hero__geo-outer::before {
-      content: '';
-      position: absolute;
-      inset: 18px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      opacity: 0.5;
-    }
-
-    .hero__geo-fill {
-      position: absolute;
-      inset: 40px;
-      border-radius: 50%;
-      background: var(--bordeaux);
-      opacity: 0.08;
-    }
-
-    .hero__geo-inner {
-      position: absolute;
-      inset: 70px;
-      border-radius: 50%;
-      border: 1px solid var(--gold);
-      background: transparent;
-    }
-
-    .hero__geo-core {
-      position: absolute;
-      inset: 110px;
-      border-radius: 50%;
-      background: var(--bordeaux);
-      opacity: 0.85;
-    }
-
-    .hero__geo-dot {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-
-    .hero__geo-dot:nth-child(5) { top: -3px; left: 50%; transform: translateX(-50%); }
-    .hero__geo-dot:nth-child(6) { bottom: -3px; left: 50%; transform: translateX(-50%); }
-    .hero__geo-dot:nth-child(7) { left: -3px; top: 50%; transform: translateY(-50%); }
-    .hero__geo-dot:nth-child(8) { right: -3px; top: 50%; transform: translateY(-50%); }
-
-    .hero__geo-line-h {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      opacity: 0.3;
-      transform: translateY(-50%);
-    }
-
-    .hero__geo-line-v {
-      position: absolute;
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      opacity: 0.3;
-      transform: translateX(-50%);
-    }
+    .btn-ghost:hover .arrow { transform: translateX(4px); }
 
     .hero__badge {
-      margin-top: 32px;
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 12px;
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 11px;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--gris-chaud);
+      opacity: 0.65;
     }
 
     .hero__badge::before,
     .hero__badge::after {
       content: '';
-      width: 20px;
-      height: 1px;
-      background: var(--gold);
-      opacity: 0.6;
+      width: 20px; height: 1px;
+      background: var(--or);
+    }
+
+    /* Scroll indicator */
+    .scroll-down {
+      position: absolute;
+      bottom: 44px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      z-index: 1;
+    }
+
+    .scroll-down__line {
+      width: 1px;
+      height: 52px;
+      background: linear-gradient(to bottom, var(--or), transparent);
+      animation: dropLine 2.2s ease-in-out infinite;
+    }
+
+    @keyframes dropLine {
+      0%, 100% { opacity: 0.35; transform: scaleY(0.6) translateY(0); }
+      50%       { opacity: 0.9;  transform: scaleY(1)   translateY(4px); }
+    }
+
+    .scroll-down__label {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gris-chaud);
+      opacity: 0.5;
     }
 
     /* ============================================================
-       STATS / CHIFFRES CLÉS
+       STATS — fond bordeaux foncé
     ============================================================ */
     .stats {
-      background: var(--bordeaux-dark);
-      padding: var(--section-pad) 0;
+      background: var(--bordeaux-fonce);
+      padding: var(--pad) 0;
       position: relative;
       overflow: hidden;
     }
@@ -512,36 +417,33 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(201,169,110,0.06) 0%, transparent 60%);
+      background: linear-gradient(120deg, rgba(201,169,110,0.07) 0%, transparent 55%);
       pointer-events: none;
     }
 
     .stats__grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
     }
 
     .stats__item {
-      padding: 0 48px;
-      position: relative;
+      padding: 0 40px;
       text-align: center;
+      position: relative;
     }
 
     .stats__item:not(:last-child)::after {
       content: '';
       position: absolute;
-      right: 0;
-      top: 10%;
-      bottom: 10%;
+      right: 0; top: 8%; bottom: 8%;
       width: 1px;
-      background: rgba(201,169,110,0.2);
+      background: rgba(201,169,110,0.18);
     }
 
     .stats__number {
       font-family: var(--ff-display);
-      font-weight: 300;
-      font-size: clamp(52px, 6vw, 80px);
+      font-weight: 600;
+      font-size: clamp(48px, 5vw, 80px);
       line-height: 1;
       color: var(--cream);
       margin-bottom: 20px;
@@ -549,16 +451,15 @@
     }
 
     .stats__number .suffix {
+      font-weight: 300;
       font-size: 0.6em;
-      color: var(--gold);
-      letter-spacing: 0;
+      color: var(--or);
     }
 
     .stats__rule {
-      width: 32px;
-      height: 1px;
-      background: var(--gold);
-      margin: 0 auto 16px;
+      width: 36px; height: 1px;
+      background: var(--or);
+      margin: 0 auto 18px;
     }
 
     .stats__label {
@@ -567,197 +468,200 @@
       font-size: 12px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(250,247,242,0.55);
-      line-height: 1.6;
+      color: rgba(250,247,242,0.5);
+      line-height: 1.65;
     }
 
     /* ============================================================
-       SERVICES
+       SERVICES — fond crème
     ============================================================ */
     .services {
-      padding: var(--section-pad) 0;
+      padding: var(--pad) 0;
       background: var(--cream);
     }
 
     .services__header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
       margin-bottom: 80px;
-      align-items: end;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 32px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--or);
     }
 
     .services__title {
       font-family: var(--ff-display);
       font-weight: 300;
-      font-size: clamp(40px, 4vw, 64px);
-      line-height: 1.15;
-      color: var(--text);
-    }
-
-    .services__intro {
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 16px;
-      line-height: 1.9;
-      color: var(--text-light);
-      padding-bottom: 8px;
+      font-size: clamp(40px, 4.5vw, 72px);
+      line-height: 1.12;
+      color: var(--noir-texte);
+      max-width: 720px;
     }
 
     .services__list {
-      border-top: 1px solid var(--border);
+      border-top: 1px solid var(--border-or);
     }
 
-    .service-item {
-      border-bottom: 1px solid var(--border);
+    .svc {
+      border-bottom: 1px solid var(--border-or);
       position: relative;
       overflow: hidden;
     }
 
-    .service-item__inner {
-      display: grid;
-      grid-template-columns: 80px 1fr 1fr auto;
-      gap: 32px;
-      align-items: center;
-      padding: 36px 0;
-      transition: padding var(--transition);
+    .svc::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(107,39,55,0.04);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.55s var(--ease);
+      pointer-events: none;
     }
 
-    .service-item__num {
+    .svc:hover::before { transform: scaleX(1); }
+
+    .svc__inner {
+      display: grid;
+      grid-template-columns: 72px 1fr 1fr auto;
+      gap: 32px;
+      align-items: center;
+      padding: 38px 0;
+    }
+
+    .svc__num {
       font-family: var(--ff-display);
       font-weight: 300;
       font-size: 15px;
-      letter-spacing: 0.08em;
-      color: var(--gold);
+      letter-spacing: 0.1em;
+      color: var(--or);
     }
 
-    .service-item__name {
+    .svc__name {
       font-family: var(--ff-display);
       font-weight: 400;
-      font-size: 26px;
+      font-size: 28px;
       color: var(--bordeaux);
-      transition: color var(--transition);
       position: relative;
+      transition: color var(--dur) var(--ease);
     }
 
-    /* Slide underline from left */
-    .service-item__name::after {
+    .svc__name::after {
       content: '';
       position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--gold);
-      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--or);
+      transition: width 0.55s var(--ease);
     }
 
-    .service-item:hover .service-item__name::after {
-      width: 100%;
-    }
+    .svc:hover .svc__name::after { width: 100%; }
 
-    .service-item__desc {
+    .svc__desc {
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 14.5px;
       line-height: 1.75;
-      color: var(--text-light);
+      color: var(--gris-chaud);
     }
 
-    .service-item__tag {
+    .svc__tag {
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 10px;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: rgba(139,125,117,0.6);
       text-align: right;
     }
 
-    /* Hover bg sweep */
-    .service-item::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to right, rgba(107,39,55,0.03), transparent);
-      transform: translateX(-101%);
-      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      pointer-events: none;
-    }
-
-    .service-item:hover::before {
-      transform: translateX(0);
-    }
-
     /* ============================================================
-       CAS CLIENT
+       CAS CLIENT — fond blanc
     ============================================================ */
     .case {
-      padding: var(--section-pad) 0;
+      padding: var(--pad) 0;
       background: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .case::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
-      opacity: 0.4;
     }
 
     .case__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 100px;
-      align-items: center;
+      gap: 96px;
+      align-items: start;
     }
 
     .case__left {
-      position: relative;
-      padding-left: 32px;
+      padding-left: 28px;
+      border-left: 1px solid rgba(201,169,110,0.3);
     }
 
     .case__label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 11px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 32px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      color: var(--or);
+      margin-bottom: 36px;
+    }
+
+    .case__label::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--or);
     }
 
     .case__pullquote {
       font-family: var(--ff-display);
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(32px, 3.5vw, 52px);
+      font-size: clamp(30px, 3.2vw, 52px);
       line-height: 1.2;
-      color: var(--text);
+      color: var(--bordeaux);
+      margin-bottom: 24px;
+    }
+
+    .case__meta {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gris-chaud);
       margin-bottom: 36px;
+      opacity: 0.7;
     }
 
     .case__desc {
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 16px;
-      line-height: 1.85;
-      color: var(--text-light);
-      margin-bottom: 40px;
+      line-height: 1.9;
+      color: var(--gris-chaud);
+      margin-bottom: 44px;
     }
 
-    .case__link {
+    .case__cta {
       font-family: var(--ff-body);
       font-weight: 400;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.06em;
       color: var(--bordeaux);
       display: inline-flex;
@@ -765,143 +669,156 @@
       gap: 10px;
       position: relative;
       padding-bottom: 3px;
-      transition: gap var(--transition);
+      transition: gap var(--dur) var(--ease);
     }
 
-    .case__link::after {
+    .case__cta::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--bordeaux);
-      transform: scaleX(0.3);
+      bottom: 0; left: 0;
+      width: 100%; height: 1px;
+      background: var(--or);
+      transform: scaleX(0.28);
       transform-origin: left;
-      transition: transform var(--transition);
+      transition: transform var(--dur) var(--ease);
     }
 
-    .case__link:hover {
-      gap: 18px;
-    }
-
-    .case__link:hover::after {
-      transform: scaleX(1);
-    }
+    .case__cta:hover { gap: 18px; }
+    .case__cta:hover::after { transform: scaleX(1); }
 
     .case__right {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 20px;
+    }
+
+    .case__img-wrap {
+      margin-bottom: 4px;
+    }
+
+    .case__img-wrap img {
+      width: 100%;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .case__metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid rgba(201,169,110,0.35);
     }
 
     .case__metric {
-      border: 1px solid var(--gold);
-      padding: 32px 36px;
-      position: relative;
-    }
-
-    .case__metric::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--gold);
-    }
-
-    .case__metric-value {
-      font-family: var(--ff-display);
-      font-weight: 300;
-      font-size: 48px;
-      color: var(--bordeaux);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .case__metric-label {
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* ============================================================
-       TESTIMONIAL
-    ============================================================ */
-    .testimonial {
-      padding: var(--section-pad) 0;
-      background: var(--cream);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonial__inner {
-      max-width: 900px;
-      margin: 0 auto;
+      padding: 28px 24px;
       text-align: center;
       position: relative;
     }
 
-    .testimonial__quotes {
-      font-family: var(--ff-display);
-      font-size: 160px;
-      line-height: 0.6;
-      color: var(--gold);
-      opacity: 0.18;
+    .case__metric:not(:last-child)::after {
+      content: '';
       position: absolute;
-      top: -20px;
-      left: -40px;
+      right: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: rgba(201,169,110,0.35);
+    }
+
+    .case__metric-val {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: 40px;
+      line-height: 1;
+      color: var(--bordeaux);
+      margin-bottom: 8px;
+    }
+
+    .case__metric-lbl {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gris-chaud);
+    }
+
+    /* ============================================================
+       TESTIMONIAL — fond crème-2
+    ============================================================ */
+    .testi {
+      padding: var(--pad) 0;
+      background: var(--cream-2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testi__inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testi__ql {
+      font-family: var(--ff-display);
+      font-size: 140px;
+      line-height: 0.65;
+      color: var(--or);
+      opacity: 0.16;
+      position: absolute;
+      top: -10px; left: -24px;
       pointer-events: none;
       user-select: none;
     }
 
-    .testimonial__quotes-close {
-      bottom: -60px;
-      right: -40px;
-      top: auto;
-      left: auto;
+    .testi__qr {
+      bottom: -52px; right: -24px;
+      top: auto; left: auto;
+      position: absolute;
+      font-family: var(--ff-display);
+      font-size: 140px;
+      line-height: 0.65;
+      color: var(--or);
+      opacity: 0.16;
+      pointer-events: none;
+      user-select: none;
     }
 
-    .testimonial__text {
+    .testi__text {
       font-family: var(--ff-display);
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(22px, 2.5vw, 30px);
-      line-height: 1.65;
+      font-size: clamp(21px, 2.2vw, 28px);
+      line-height: 1.7;
       color: var(--bordeaux);
       margin-bottom: 48px;
       position: relative;
       z-index: 1;
     }
 
-    .testimonial__rule {
-      width: 48px;
-      height: 1px;
-      background: var(--gold);
+    .testi__rule {
+      width: 40px; height: 1px;
+      background: var(--or);
       margin: 0 auto 24px;
     }
 
-    .testimonial__author {
+    .testi__author {
       font-family: var(--ff-body);
       font-weight: 300;
-      font-size: 13px;
-      letter-spacing: 0.14em;
+      font-size: 12px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--gris-chaud);
     }
 
     /* ============================================================
-       LOGOS CLIENTS
+       LOGOS CLIENTS — fond blanc
     ============================================================ */
     .clients {
-      padding: 80px 0;
+      padding: 96px 0;
       background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border-or);
+      border-bottom: 1px solid var(--border-or);
     }
 
     .clients__label {
@@ -909,10 +826,10 @@
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 11px;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 48px;
+      color: var(--or);
+      margin-bottom: 56px;
     }
 
     .clients__row {
@@ -920,185 +837,150 @@
       align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 0;
+      gap: 56px;
     }
 
-    .clients__name {
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      padding: 0 40px;
-      position: relative;
-      transition: color var(--transition);
+    .clients__row img {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(1) sepia(0.15);
+      opacity: 0.45;
+      transition: all 0.4s ease;
+      display: block;
     }
 
-    .clients__name:hover {
-      color: var(--bordeaux);
-    }
-
-    .clients__name:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 16px;
-      background: var(--gold);
-      opacity: 0.5;
+    .clients__row img:hover {
+      opacity: 0.85;
+      filter: grayscale(0.2) sepia(0.1);
     }
 
     /* ============================================================
-       MÉTHODE
+       PROCESS — fond bordeaux foncé
     ============================================================ */
-    .method {
-      padding: var(--section-pad) 0;
-      background: var(--cream);
+    .process {
+      padding: var(--pad) 0;
+      background: var(--bordeaux-fonce);
+      position: relative;
+      overflow: hidden;
     }
 
-    .method__header {
-      margin-bottom: 80px;
+    .process::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(145deg, rgba(201,169,110,0.06) 0%, transparent 50%);
+      pointer-events: none;
     }
 
-    .method__eyebrow {
+    .process__header {
+      margin-bottom: 88px;
+    }
+
+    .process__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 11px;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 24px;
+      color: rgba(201,169,110,0.7);
+      margin-bottom: 28px;
     }
 
-    .method__title {
+    .process__eyebrow::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--or);
+      opacity: 0.6;
+    }
+
+    .process__title {
       font-family: var(--ff-display);
       font-weight: 300;
-      font-size: clamp(40px, 4vw, 64px);
-      line-height: 1.15;
-      color: var(--text);
+      font-size: clamp(44px, 5vw, 80px);
+      line-height: 1.1;
+      color: var(--cream);
     }
 
-    .method__inner {
+    .process__timeline {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .method__steps {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
       position: relative;
-      padding-left: 40px;
     }
 
-    /* Vertical gold timeline line */
-    .method__steps::before {
+    /* Horizontal gold line connecting all steps */
+    .process__timeline::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 12px;
-      bottom: 12px;
-      width: 1.5px;
-      background: linear-gradient(to bottom, var(--gold) 0%, var(--gold) 100%);
+      left: 6%;
+      right: 6%;
+      top: 14px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--or), var(--or), var(--or), transparent);
+      opacity: 0.4;
     }
 
-    .method__step {
+    .process__step {
+      padding: 0 48px 0 0;
       position: relative;
-      padding-bottom: 56px;
     }
 
-    .method__step:last-child {
-      padding-bottom: 0;
-    }
-
-    /* Dot on the timeline */
-    .method__step::before {
-      content: '';
-      position: absolute;
-      left: -47px;
-      top: 8px;
-      width: 10px;
-      height: 10px;
+    .process__step-dot {
+      width: 10px; height: 10px;
       border-radius: 50%;
-      border: 1.5px solid var(--gold);
-      background: var(--cream);
+      border: 1.5px solid var(--or);
+      background: var(--bordeaux-fonce);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
     }
 
-    .method__step-num {
+    .process__step-dot::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--or);
+    }
+
+    .process__step-num {
       font-family: var(--ff-display);
       font-weight: 300;
       font-size: 13px;
-      letter-spacing: 0.12em;
-      color: var(--gold);
-      margin-bottom: 10px;
-    }
-
-    .method__step-title {
-      font-family: var(--ff-display);
-      font-weight: 500;
-      font-size: 28px;
-      color: var(--bordeaux);
+      letter-spacing: 0.14em;
+      color: var(--or);
+      opacity: 0.8;
       margin-bottom: 12px;
     }
 
-    .method__step-desc {
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 15px;
-      line-height: 1.8;
-      color: var(--text-light);
-    }
-
-    .method__right {
-      padding-top: 8px;
-    }
-
-    .method__quote {
+    .process__step-title {
       font-family: var(--ff-display);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(24px, 2.5vw, 36px);
-      line-height: 1.5;
-      color: var(--text);
-      margin-bottom: 40px;
-      padding-left: 32px;
-      border-left: 1.5px solid var(--gold);
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--cream);
+      margin-bottom: 14px;
     }
 
-    .method__promise {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .method__promise-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
+    .process__step-desc {
       font-family: var(--ff-body);
       font-weight: 300;
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--text-light);
-    }
-
-    .method__promise-icon {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--gold);
-      margin-top: 10px;
-      flex-shrink: 0;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: rgba(250,247,242,0.55);
     }
 
     /* ============================================================
-       CTA FINAL
+       CTA FINAL — fond crème
     ============================================================ */
     .cta-final {
-      padding: var(--section-pad) 0;
-      background: var(--cream-dark);
+      padding: var(--pad) 0;
+      background: var(--cream);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -1108,11 +990,10 @@
       content: 'OVM';
       font-family: var(--ff-display);
       font-weight: 300;
-      font-size: 28vw;
-      color: rgba(107,39,55,0.04);
+      font-size: 26vw;
+      color: rgba(107,39,55,0.035);
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       line-height: 1;
       pointer-events: none;
@@ -1125,22 +1006,32 @@
       z-index: 1;
     }
 
-    .cta-final__label {
+    .cta-final__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 11px;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 40px;
+      color: var(--or);
+      margin-bottom: 44px;
+    }
+
+    .cta-final__eyebrow::before,
+    .cta-final__eyebrow::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--or);
     }
 
     .cta-final__title {
       font-family: var(--ff-display);
       font-weight: 300;
-      font-size: clamp(48px, 6vw, 88px);
+      font-size: clamp(48px, 6.5vw, 96px);
       line-height: 1.1;
-      color: var(--text);
+      color: var(--noir-texte);
       margin-bottom: 32px;
     }
 
@@ -1148,8 +1039,8 @@
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 18px;
-      color: var(--text-light);
-      margin-bottom: 56px;
+      color: var(--gris-chaud);
+      margin-bottom: 60px;
       letter-spacing: 0.02em;
     }
 
@@ -1164,21 +1055,19 @@
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 15px;
-      letter-spacing: 0.06em;
-      color: var(--text-muted);
-      transition: color var(--transition);
+      letter-spacing: 0.07em;
+      color: var(--gris-chaud);
+      transition: color var(--dur) var(--ease);
     }
 
-    .cta-final__email:hover {
-      color: var(--bordeaux);
-    }
+    .cta-final__email:hover { color: var(--bordeaux); }
 
     /* ============================================================
-       FOOTER
+       FOOTER — bordeaux très foncé
     ============================================================ */
     .footer {
-      background: var(--bordeaux-dark);
-      padding: 72px 0 48px;
+      background: var(--bordeaux-footer);
+      padding: 80px 0 52px;
       position: relative;
     }
 
@@ -1186,43 +1075,46 @@
       content: '';
       position: absolute;
       top: 0;
-      left: 48px;
-      right: 48px;
+      left: 64px; right: 64px;
       height: 1px;
-      background: linear-gradient(to right, transparent, var(--gold), transparent);
-      opacity: 0.5;
+      background: linear-gradient(to right, transparent, var(--or), transparent);
+      opacity: 0.45;
     }
 
     .footer__grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      gap: 64px;
-      margin-bottom: 64px;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 72px;
+      margin-bottom: 72px;
     }
 
     .footer__logo {
-      font-family: var(--ff-display);
-      font-weight: 500;
-      font-size: 22px;
-      color: var(--cream);
-      margin-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .footer__logo img {
+      height: 38px;
+      width: auto;
+      /* invert slightly for dark footer */
+      filter: brightness(0) invert(1) opacity(0.85);
     }
 
     .footer__baseline {
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 14px;
-      line-height: 1.8;
-      color: rgba(250,247,242,0.45);
+      line-height: 1.85;
+      color: rgba(250,247,242,0.42);
     }
 
     .footer__col-title {
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 10px;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--or);
+      opacity: 0.8;
       margin-bottom: 24px;
     }
 
@@ -1236,54 +1128,29 @@
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 14px;
-      color: rgba(250,247,242,0.55);
+      color: rgba(250,247,242,0.48);
       letter-spacing: 0.04em;
-      transition: color var(--transition);
+      transition: color var(--dur) var(--ease);
     }
 
-    .footer__links a:hover {
-      color: var(--cream);
-    }
+    .footer__links a:hover { color: var(--cream); }
 
-    .footer__contact-item {
+    .footer__contact-line {
+      display: block;
       font-family: var(--ff-body);
       font-weight: 300;
       font-size: 14px;
-      color: rgba(250,247,242,0.55);
-      line-height: 1.8;
-      display: block;
+      color: rgba(250,247,242,0.48);
+      line-height: 1.85;
+      transition: color var(--dur) var(--ease);
     }
 
-    .footer__contact-item a {
-      color: rgba(250,247,242,0.55);
-      transition: color var(--transition);
-    }
-
-    .footer__contact-item a:hover {
-      color: var(--cream);
-    }
-
-    .footer__bottom {
-      border-top: 1px solid rgba(201,169,110,0.12);
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer__legal {
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      color: rgba(250,247,242,0.3);
-    }
+    .footer__contact-line:hover { color: var(--cream); }
 
     .footer__social {
       display: flex;
       gap: 24px;
+      margin-top: 28px;
     }
 
     .footer__social a {
@@ -1292,12 +1159,28 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(250,247,242,0.35);
-      transition: color var(--transition);
+      color: rgba(250,247,242,0.3);
+      transition: color var(--dur) var(--ease);
     }
 
-    .footer__social a:hover {
-      color: var(--gold);
+    .footer__social a:hover { color: var(--or); }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(201,169,110,0.1);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer__legal {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: rgba(250,247,242,0.26);
     }
 
     /* ============================================================
@@ -1305,32 +1188,27 @@
     ============================================================ */
     @media (max-width: 1200px) {
       :root {
-        --section-pad: 100px;
+        --pad: var(--pad-md);
       }
 
-      .container {
-        padding: 0 36px;
+      .wrap { padding: 0 44px; }
+
+      .stats__item { padding: 0 28px; }
+
+      .svc__inner {
+        grid-template-columns: 56px 1fr 1fr;
+      }
+      .svc__tag { display: none; }
+
+      .process__timeline {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 64px 48px;
       }
 
-      .hero__geo {
-        width: 280px;
-        height: 280px;
-      }
+      .process__timeline::before { display: none; }
 
-      .hero__geo-core {
-        inset: 90px;
-      }
-
-      .stats__item {
-        padding: 0 28px;
-      }
-
-      .service-item__inner {
-        grid-template-columns: 60px 1fr 1fr;
-      }
-      .service-item__tag {
-        display: none;
-      }
+      .footer::before { left: 44px; right: 44px; }
+      .footer__grid { gap: 48px; }
     }
 
     /* ============================================================
@@ -1338,212 +1216,81 @@
     ============================================================ */
     @media (max-width: 768px) {
       :root {
-        --section-pad: var(--section-pad-sm);
+        --pad: var(--pad-sm);
       }
 
-      .container {
-        padding: 0 24px;
-      }
+      .wrap { padding: 0 24px; }
 
       /* Nav */
+      .nav { padding: 20px 0; }
+      .nav.scrolled { padding: 14px 0; }
       .nav__links,
-      .nav__cta {
-        display: none;
-      }
-
-      .nav__hamburger {
-        display: flex;
-      }
+      .nav__cta { display: none; }
+      .nav__burger { display: flex; }
 
       /* Hero */
-      .hero::before {
-        font-size: 70vw;
-        right: -15vw;
+      .hero {
+        padding: 100px 24px 80px;
+        text-align: center;
       }
-
-      .hero__inner {
-        grid-template-columns: 1fr;
-        gap: 60px;
-      }
-
-      .hero__left {
-        padding: 100px 0 40px;
-      }
-
-      .hero__right {
-        padding: 0 0 60px;
-      }
-
-      .hero__geo {
-        width: 220px;
-        height: 220px;
-      }
-
-      .hero__geo-core {
-        inset: 70px;
-      }
+      .hero::before { font-size: 80vw; }
+      .hero__title { font-size: clamp(44px, 12vw, 72px); }
+      .hero__subtitle { font-size: 16px; }
+      .hero__actions { gap: 24px; }
+      .scroll-down { display: none; }
 
       /* Stats */
       .stats__grid {
         grid-template-columns: 1fr 1fr;
-        gap: 48px 0;
+        gap: 52px 0;
       }
-
-      .stats__item:not(:last-child)::after {
-        display: none;
-      }
-
+      .stats__item:not(:last-child)::after { display: none; }
       .stats__item:nth-child(1),
       .stats__item:nth-child(2) {
         border-bottom: 1px solid rgba(201,169,110,0.15);
-        padding-bottom: 48px;
+        padding-bottom: 52px;
       }
 
       /* Services */
-      .services__header {
-        grid-template-columns: 1fr;
-        gap: 32px;
-        margin-bottom: 48px;
-      }
-
-      .service-item__inner {
-        grid-template-columns: 48px 1fr;
-        gap: 16px;
-      }
-
-      .service-item__desc,
-      .service-item__tag {
-        display: none;
-      }
-
-      .service-item__inner {
+      .svc__inner {
+        grid-template-columns: 44px 1fr;
         padding: 24px 0;
+        gap: 14px;
       }
-
-      .service-item__name {
-        font-size: 22px;
-      }
+      .svc__desc,
+      .svc__tag { display: none; }
+      .svc__name { font-size: 22px; }
 
       /* Case */
       .case__inner {
         grid-template-columns: 1fr;
-        gap: 56px;
+        gap: 48px;
       }
+      .case__left { padding-left: 16px; }
+      .case__metrics { grid-template-columns: repeat(3, 1fr); }
+      .case__metric-val { font-size: 28px; }
 
-      .case__left {
-        padding-left: 0;
-      }
+      /* Testimonial */
+      .testi__ql, .testi__qr { display: none; }
 
-      /* Method */
-      .method__inner {
-        grid-template-columns: 1fr;
-        gap: 56px;
-      }
+      /* Clients */
+      .clients__row { gap: 36px; }
 
-      /* Footer */
-      .footer__grid {
+      /* Process */
+      .process__timeline {
         grid-template-columns: 1fr;
         gap: 48px;
       }
+      .process__timeline::before { display: none; }
+      .process__step { padding: 0; }
 
-      .footer__bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      /* CTA */
+      .cta-final__title { font-size: clamp(40px, 11vw, 60px); }
 
-      /* Clients */
-      .clients__row {
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .clients__name::after {
-        display: none;
-      }
-
-      .clients__name {
-        padding: 0;
-      }
-
-      /* Testimonial quotes */
-      .testimonial__quotes {
-        font-size: 100px;
-        left: -10px;
-      }
-    }
-
-    /* ============================================================
-       SMOOTH SCROLL INDICATOR
-    ============================================================ */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 48px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      opacity: 0.5;
-      z-index: 2;
-    }
-
-    .scroll-indicator__line {
-      width: 1px;
-      height: 48px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      animation: scrollLine 2s ease-in-out infinite;
-    }
-
-    @keyframes scrollLine {
-      0%, 100% { opacity: 0.4; transform: scaleY(0.7); }
-      50% { opacity: 1; transform: scaleY(1); }
-    }
-
-    .scroll-indicator__text {
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 9px;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* ============================================================
-       GEO ANIMATION
-    ============================================================ */
-    @keyframes rotateSlow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .hero__geo-outer {
-      animation: rotateSlow 40s linear infinite;
-    }
-
-    .hero__geo-inner {
-      animation: rotateSlow 25s linear infinite reverse;
-    }
-
-    /* Section header gold accent */
-    .section-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      font-family: var(--ff-body);
-      font-weight: 300;
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 28px;
-    }
-
-    .section-eyebrow::before {
-      content: '';
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
+      /* Footer */
+      .footer__grid { grid-template-columns: 1fr; gap: 48px; }
+      .footer::before { left: 24px; right: 24px; }
+      .footer__bottom { flex-direction: column; align-items: flex-start; }
     }
   </style>
 </head>
@@ -1554,126 +1301,110 @@
        NAVIGATION
   ============================================================ -->
   <nav class="nav" id="nav">
-    <div class="container">
+    <div class="wrap">
       <div class="nav__inner">
-        <a href="#" class="nav__logo">OVM Communication</a>
+
+        <a href="#" class="nav__logo" aria-label="OVM Communication — accueil">
+          <img src="https://ovm-communication.fr/wp-content/uploads/2023/11/logo-ovm-communication.png"
+               alt="OVM Communication">
+        </a>
 
         <ul class="nav__links">
           <li><a href="#services">Savoir-faire</a></li>
           <li><a href="#case">Réalisations</a></li>
-          <li><a href="#method">À propos</a></li>
+          <li><a href="#process">Méthode</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
 
         <a href="#contact" class="nav__cta"><span>Parlons de votre projet</span></a>
 
-        <button class="nav__hamburger" aria-label="Menu" id="hamburger">
+        <button class="nav__burger" id="burger" aria-label="Ouvrir le menu">
           <span></span>
           <span></span>
           <span></span>
         </button>
+
       </div>
     </div>
   </nav>
+
 
   <!-- ============================================================
        HERO
   ============================================================ -->
   <section class="hero" id="hero">
-    <div class="container">
-      <div class="hero__inner">
+    <div class="hero__inner">
 
-        <!-- Left column -->
-        <div class="hero__left">
-          <div class="hero__eyebrow reveal">
-            <span class="gold-rule"></span>
-            <span class="hero__eyebrow-text">Agence créative · Lille</span>
-          </div>
-
-          <h1 class="hero__title reveal reveal-delay-1">
-            L'agence qui met<br>
-            votre marque en<br>
-            <em>lumière.</em>
-          </h1>
-
-          <p class="hero__subtitle reveal reveal-delay-2">
-            Depuis 2012, OVM Communication accompagne les entrepreneurs
-            et les PME exigeants qui refusent le compromis entre qualité,
-            honnêteté et efficacité.
-          </p>
-
-          <div class="hero__actions reveal reveal-delay-3">
-            <a href="#contact" class="btn-primary">
-              <span>Démarrer un projet</span>
-            </a>
-            <a href="#case" class="btn-ghost">
-              Découvrir nos réalisations <span class="arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right column — abstract geo composition -->
-        <div class="hero__right reveal reveal-delay-2">
-          <div class="hero__geo">
-            <div class="hero__geo-outer"></div>
-            <div class="hero__geo-fill"></div>
-            <div class="hero__geo-inner"></div>
-            <div class="hero__geo-core"></div>
-            <div class="hero__geo-dot"></div>
-            <div class="hero__geo-dot"></div>
-            <div class="hero__geo-dot"></div>
-            <div class="hero__geo-dot"></div>
-            <div class="hero__geo-line-h"></div>
-            <div class="hero__geo-line-v"></div>
-          </div>
-
-          <div class="hero__badge">
-            Fondée en 2012 · Lambersart, Lille
-          </div>
-        </div>
-
+      <div class="hero__eyebrow r">
+        Agence créative · Lambersart, Lille
       </div>
+
+      <h1 class="hero__title r d1">
+        L'agence qui met<br>
+        votre marque<br>
+        <em>en lumière.</em>
+      </h1>
+
+      <p class="hero__subtitle r d2">
+        Depuis 2012, OVM Communication accompagne les entrepreneurs et PME exigeants
+        qui refusent le compromis entre qualité, honnêteté et efficacité.
+      </p>
+
+      <div class="hero__actions r d3">
+        <a href="#contact" class="btn-primary">
+          <span>Démarrer un projet</span>
+        </a>
+        <a href="#case" class="btn-ghost">
+          Découvrir nos réalisations <span class="arrow">→</span>
+        </a>
+      </div>
+
+      <div class="hero__badge r d4">
+        Fondée en 2012 · Lambersart, Lille
+      </div>
+
     </div>
 
-    <div class="scroll-indicator">
-      <div class="scroll-indicator__line"></div>
-      <span class="scroll-indicator__text">Défiler</span>
+    <div class="scroll-down">
+      <div class="scroll-down__line"></div>
+      <span class="scroll-down__label">Défiler</span>
     </div>
   </section>
 
+
   <!-- ============================================================
-       CHIFFRES CLÉS
+       STATS
   ============================================================ -->
   <section class="stats" id="stats">
-    <div class="container">
+    <div class="wrap">
       <div class="stats__grid">
 
-        <div class="stats__item reveal">
+        <div class="stats__item r">
           <div class="stats__number">
             <span class="counter" data-target="12" data-suffix="">12</span>
-            <span class="suffix">&nbsp;ans</span>
+            <span class="suffix">&thinsp;ans</span>
           </div>
           <div class="stats__rule"></div>
           <p class="stats__label">d'accompagnement<br>et d'expertise</p>
         </div>
 
-        <div class="stats__item reveal reveal-delay-1">
+        <div class="stats__item r d1">
           <div class="stats__number">
-            <span class="counter" data-target="50" data-suffix="+">50+</span>
+            <span class="counter" data-target="50" data-suffix="+">50</span><span class="suffix">+</span>
           </div>
           <div class="stats__rule"></div>
           <p class="stats__label">marques transformées<br>et propulsées</p>
         </div>
 
-        <div class="stats__item reveal reveal-delay-2">
+        <div class="stats__item r d2">
           <div class="stats__number">
-            <span style="font-size: 0.7em;">~</span><span class="counter" data-target="100" data-suffix="%">100%</span>
+            <span style="font-size:0.65em;font-family:var(--ff-display);font-weight:300;color:var(--cream);">~</span><span class="counter" data-target="100" data-suffix="%">100</span><span class="suffix">%</span>
           </div>
           <div class="stats__rule"></div>
           <p class="stats__label">clients fidèles<br>et satisfaits</p>
         </div>
 
-        <div class="stats__item reveal reveal-delay-3">
+        <div class="stats__item r d3">
           <div class="stats__number">
             <span class="counter" data-target="1" data-suffix="">1</span>
           </div>
@@ -1685,79 +1416,73 @@
     </div>
   </section>
 
+
   <!-- ============================================================
        SERVICES
   ============================================================ -->
   <section class="services" id="services">
-    <div class="container">
+    <div class="wrap">
 
-      <div class="services__header">
-        <div class="reveal">
-          <span class="section-eyebrow">Savoir-faire</span>
-          <h2 class="services__title">
-            Un savoir-faire complet,<br>au service de<br>votre ambition.
-          </h2>
-        </div>
-        <p class="services__intro reveal reveal-delay-1">
-          De l'identité visuelle au référencement naturel, en passant par la création
-          de sites web et le motion design — OVM vous offre la polyvalence d'une grande
-          agence avec la réactivité et l'attention d'un partenaire de confiance.
-        </p>
+      <div class="services__header r">
+        <span class="section-eyebrow">Savoir-faire</span>
+        <h2 class="services__title">
+          Un savoir-faire complet,<br>au service de votre ambition.
+        </h2>
       </div>
 
       <ul class="services__list">
 
-        <li class="service-item reveal">
-          <div class="service-item__inner">
-            <span class="service-item__num">I</span>
-            <span class="service-item__name">Identité visuelle</span>
-            <span class="service-item__desc">Logo, charte graphique, univers de marque. Votre identité construite pour durer et pour convaincre.</span>
-            <span class="service-item__tag">Branding</span>
+        <li class="svc r">
+          <div class="svc__inner">
+            <span class="svc__num">I</span>
+            <span class="svc__name">Identité visuelle</span>
+            <span class="svc__desc">Logo, charte graphique, univers de marque. Une identité construite pour durer et pour convaincre dès le premier regard.</span>
+            <span class="svc__tag">Branding</span>
           </div>
         </li>
 
-        <li class="service-item reveal reveal-delay-1">
-          <div class="service-item__inner">
-            <span class="service-item__num">II</span>
-            <span class="service-item__name">Création de sites web</span>
-            <span class="service-item__desc">Sites vitrine, e-commerce, plateformes sur-mesure. Design et performance au service de votre croissance.</span>
-            <span class="service-item__tag">Digital</span>
+        <li class="svc r d1">
+          <div class="svc__inner">
+            <span class="svc__num">II</span>
+            <span class="svc__name">Site web</span>
+            <span class="svc__desc">Vitrine, e-commerce, plateforme sur-mesure. Design et performance au service de votre croissance digitale.</span>
+            <span class="svc__tag">Digital</span>
           </div>
         </li>
 
-        <li class="service-item reveal reveal-delay-2">
-          <div class="service-item__inner">
-            <span class="service-item__num">III</span>
-            <span class="service-item__name">Motion design</span>
-            <span class="service-item__desc">Animation de marque, vidéo institutionnelle, motion graphics. Le mouvement au service de l'émotion.</span>
-            <span class="service-item__tag">Vidéo</span>
+        <li class="svc r d2">
+          <div class="svc__inner">
+            <span class="svc__num">III</span>
+            <span class="svc__name">Motion design</span>
+            <span class="svc__desc">Animation de marque, vidéo institutionnelle, motion graphics. Le mouvement au service de l'émotion et de la mémorisation.</span>
+            <span class="svc__tag">Vidéo</span>
           </div>
         </li>
 
-        <li class="service-item reveal">
-          <div class="service-item__inner">
-            <span class="service-item__num">IV</span>
-            <span class="service-item__name">SEO & Stratégie digitale</span>
-            <span class="service-item__desc">Audit, optimisation technique, contenu éditorial. Être visible là où vos clients vous cherchent.</span>
-            <span class="service-item__tag">Référencement</span>
+        <li class="svc r">
+          <div class="svc__inner">
+            <span class="svc__num">IV</span>
+            <span class="svc__name">SEO &amp; Stratégie digitale</span>
+            <span class="svc__desc">Audit, optimisation technique, contenu éditorial. Être visible là où vos clients vous cherchent, quand ils vous cherchent.</span>
+            <span class="svc__tag">Référencement</span>
           </div>
         </li>
 
-        <li class="service-item reveal reveal-delay-1">
-          <div class="service-item__inner">
-            <span class="service-item__num">V</span>
-            <span class="service-item__name">Communication print</span>
-            <span class="service-item__desc">Plaquettes, supports commerciaux, signalétique. La qualité tangible qui laisse une impression durable.</span>
-            <span class="service-item__tag">Print</span>
+        <li class="svc r d1">
+          <div class="svc__inner">
+            <span class="svc__num">V</span>
+            <span class="svc__name">Communication print</span>
+            <span class="svc__desc">Plaquettes, supports commerciaux, signalétique. La qualité tangible qui laisse une impression durable sur vos interlocuteurs.</span>
+            <span class="svc__tag">Print</span>
           </div>
         </li>
 
-        <li class="service-item reveal reveal-delay-2">
-          <div class="service-item__inner">
-            <span class="service-item__num">VI</span>
-            <span class="service-item__name">Réseaux sociaux</span>
-            <span class="service-item__desc">Stratégie éditoriale, création de contenu, pilotage. Une présence cohérente et engageante sur chaque canal.</span>
-            <span class="service-item__tag">Social</span>
+        <li class="svc r d2">
+          <div class="svc__inner">
+            <span class="svc__num">VI</span>
+            <span class="svc__name">Réseaux sociaux</span>
+            <span class="svc__desc">Stratégie éditoriale, création de contenus, pilotage. Une présence cohérente et engageante sur chaque canal.</span>
+            <span class="svc__tag">Social</span>
           </div>
         </li>
 
@@ -1766,47 +1491,55 @@
     </div>
   </section>
 
+
   <!-- ============================================================
        CAS CLIENT
   ============================================================ -->
   <section class="case" id="case">
-    <div class="container">
+    <div class="wrap">
       <div class="case__inner">
 
-        <div class="case__left reveal">
-          <p class="case__label">
-            <span class="gold-rule"></span>
-            Étude de cas
-          </p>
+        <div class="case__left r">
+          <p class="case__label">Étude de cas</p>
+
           <blockquote class="case__pullquote">
             "Une marque repensée.<br>Un chiffre d'affaires<br>qui suit."
           </blockquote>
+
+          <p class="case__meta">Cabinet de conseil · Lille, Hauts-de-France</p>
+
           <p class="case__desc">
-            Cabinet de conseil indépendant en Région Hauts-de-France. Accompagnement
-            complet sur 18 mois : refonte de l'identité visuelle, création d'un nouveau
-            site web, stratégie SEO et production de contenus. Une transformation profonde
-            qui a repositionné le cabinet comme référence sur son marché.
+            Accompagnement complet sur 18 mois : refonte de l'identité visuelle, création
+            d'un nouveau site web, stratégie SEO et production de contenus. Une transformation
+            profonde qui a repositionné le cabinet comme référence incontournable sur son marché.
           </p>
-          <a href="#contact" class="case__link">
-            Discuter d'un projet similaire <span>→</span>
+
+          <a href="#contact" class="case__cta">
+            Lire l'étude de cas complète <span>→</span>
           </a>
         </div>
 
         <div class="case__right">
 
-          <div class="case__metric reveal reveal-delay-1">
-            <div class="case__metric-value">+340%</div>
-            <div class="case__metric-label">de visibilité organique en 12 mois</div>
+          <div class="case__img-wrap r d1">
+            <img src="https://ovm-communication.fr/wp-content/uploads/2025/02/docteur-dsi-5-1120x633.jpg.webp"
+                 alt="Cas client — cabinet de conseil, Lille"
+                 loading="lazy">
           </div>
 
-          <div class="case__metric reveal reveal-delay-2">
-            <div class="case__metric-value">×3</div>
-            <div class="case__metric-label">leads qualifiés générés chaque mois</div>
-          </div>
-
-          <div class="case__metric reveal reveal-delay-3">
-            <div class="case__metric-value">18 mois</div>
-            <div class="case__metric-label">de suivi, d'itération et d'accompagnement</div>
+          <div class="case__metrics r d2">
+            <div class="case__metric">
+              <div class="case__metric-val">+340%</div>
+              <div class="case__metric-lbl">Visibilité organique</div>
+            </div>
+            <div class="case__metric">
+              <div class="case__metric-val">×3</div>
+              <div class="case__metric-lbl">Leads qualifiés</div>
+            </div>
+            <div class="case__metric">
+              <div class="case__metric-val">94%</div>
+              <div class="case__metric-lbl">Satisfaction client</div>
+            </div>
           </div>
 
         </div>
@@ -1815,157 +1548,164 @@
     </div>
   </section>
 
+
   <!-- ============================================================
        TÉMOIGNAGE
   ============================================================ -->
-  <section class="testimonial" id="testimonial">
-    <div class="container">
-      <div class="testimonial__inner reveal">
+  <section class="testi" id="testimonial">
+    <div class="wrap">
+      <div class="testi__inner r">
 
-        <div class="testimonial__quotes">&ldquo;</div>
+        <div class="testi__ql">&ldquo;</div>
 
-        <blockquote class="testimonial__text">
+        <blockquote class="testi__text">
           Olivier a une capacité rare&nbsp;: il comprend immédiatement ce qu'on cherche
-          à exprimer, et le traduit avec une justesse remarquable. C'est un partenaire
-          de confiance, disponible, exigeant avec lui-même et toujours honnête
-          sur ce qui est réellement utile.
+          à exprimer, et le traduit avec une justesse remarquable.
+          C'est un partenaire de confiance.
         </blockquote>
 
-        <div class="testimonial__rule"></div>
+        <div class="testi__rule"></div>
 
-        <p class="testimonial__author">
-          Marie L. — Fondatrice, cabinet de coaching professionnel, Lille
-        </p>
+        <p class="testi__author">Marie L. — Fondatrice, cabinet de coaching professionnel, Lille</p>
 
-        <div class="testimonial__quotes testimonial__quotes-close">&rdquo;</div>
+        <div class="testi__qr">&rdquo;</div>
 
       </div>
     </div>
   </section>
+
 
   <!-- ============================================================
        LOGOS CLIENTS
   ============================================================ -->
   <section class="clients">
-    <div class="container">
-      <p class="clients__label reveal">Ils nous accordent leur confiance</p>
-      <div class="clients__row reveal reveal-delay-1">
-        <span class="clients__name">Artisans & PME</span>
-        <span class="clients__name">Cabinets conseil</span>
-        <span class="clients__name">Startups Nord</span>
-        <span class="clients__name">Professions libérales</span>
-        <span class="clients__name">Associations</span>
-        <span class="clients__name">Commerces locaux</span>
+    <div class="wrap">
+
+      <p class="clients__label r">Ils nous accordent leur confiance</p>
+
+      <div class="clients__row r d1">
+
+        <img src="https://ovm-communication.fr/wp-content/uploads/2016/08/Lesaffre-1.png"
+             alt="Lesaffre"
+             loading="lazy"
+             onmouseover="this.style.opacity='0.85';this.style.filter='grayscale(0.2) sepia(0.1)'"
+             onmouseout="this.style.opacity='0.45';this.style.filter='grayscale(1) sepia(0.15)'">
+
+        <img src="https://ovm-communication.fr/wp-content/uploads/2016/08/GDRF-1.png"
+             alt="GRDF"
+             loading="lazy"
+             onmouseover="this.style.opacity='0.85';this.style.filter='grayscale(0.2) sepia(0.1)'"
+             onmouseout="this.style.opacity='0.45';this.style.filter='grayscale(1) sepia(0.15)'">
+
+        <img src="https://ovm-communication.fr/wp-content/uploads/2016/06/AFNOR-1.png"
+             alt="AFNOR"
+             loading="lazy"
+             onmouseover="this.style.opacity='0.85';this.style.filter='grayscale(0.2) sepia(0.1)'"
+             onmouseout="this.style.opacity='0.45';this.style.filter='grayscale(1) sepia(0.15)'">
+
+        <img src="https://ovm-communication.fr/wp-content/uploads/2023/03/caisse-des-depots.png"
+             alt="Caisse des Dépôts"
+             loading="lazy"
+             onmouseover="this.style.opacity='0.85';this.style.filter='grayscale(0.2) sepia(0.1)'"
+             onmouseout="this.style.opacity='0.45';this.style.filter='grayscale(1) sepia(0.15)'">
+
+        <img src="https://ovm-communication.fr/wp-content/uploads/2023/03/fayat.png"
+             alt="Fayat"
+             loading="lazy"
+             onmouseover="this.style.opacity='0.85';this.style.filter='grayscale(0.2) sepia(0.1)'"
+             onmouseout="this.style.opacity='0.45';this.style.filter='grayscale(1) sepia(0.15)'">
+
+        <img src="https://ovm-communication.fr/wp-content/uploads/2023/03/abeille-assurances.png"
+             alt="Abeille Assurances"
+             loading="lazy"
+             onmouseover="this.style.opacity='0.85';this.style.filter='grayscale(0.2) sepia(0.1)'"
+             onmouseout="this.style.opacity='0.45';this.style.filter='grayscale(1) sepia(0.15)'">
+
       </div>
+
     </div>
   </section>
+
 
   <!-- ============================================================
-       MÉTHODE
+       PROCESS — fond bordeaux foncé
   ============================================================ -->
-  <section class="method" id="method">
-    <div class="container">
+  <section class="process" id="process">
+    <div class="wrap">
 
-      <div class="method__header reveal">
-        <p class="method__eyebrow">Notre méthode</p>
-        <h2 class="method__title">
-          Simple. Transparent.<br>Toujours à vos côtés.
-        </h2>
+      <div class="process__header r">
+        <p class="process__eyebrow">Notre méthode</p>
+        <h2 class="process__title">Notre méthode.</h2>
       </div>
 
-      <div class="method__inner">
+      <div class="process__timeline">
 
-        <!-- Steps timeline -->
-        <div class="method__steps">
-
-          <div class="method__step reveal">
-            <p class="method__step-num">Étape 01</p>
-            <h3 class="method__step-title">Écoute</h3>
-            <p class="method__step-desc">
-              Un premier échange de 30 minutes pour cerner vos enjeux, vos ambitions
-              et le contexte de votre projet. Sans jargon, sans engagement.
-            </p>
-          </div>
-
-          <div class="method__step reveal reveal-delay-1">
-            <p class="method__step-num">Étape 02</p>
-            <h3 class="method__step-title">Proposition</h3>
-            <p class="method__step-desc">
-              Une stratégie sur-mesure et un devis transparent sous 48 heures.
-              Pas de surprise, pas de postes cachés — juste une roadmap claire et budgétée.
-            </p>
-          </div>
-
-          <div class="method__step reveal reveal-delay-2">
-            <p class="method__step-num">Étape 03</p>
-            <h3 class="method__step-title">Création</h3>
-            <p class="method__step-desc">
-              Un processus itératif et collaboratif jusqu'à la version parfaite.
-              Vous validez chaque étape, vous gardez la main.
-            </p>
-          </div>
-
-          <div class="method__step reveal reveal-delay-3">
-            <p class="method__step-num">Étape 04</p>
-            <h3 class="method__step-title">Livraison & suivi</h3>
-            <p class="method__step-desc">
-              Les livrables complets, la formation à vos outils, et un accompagnement
-              post-lancement. Parce que notre travail ne s'arrête pas à la livraison.
-            </p>
-          </div>
-
+        <div class="process__step r">
+          <div class="process__step-dot"></div>
+          <p class="process__step-num">01</p>
+          <h3 class="process__step-title">Écoute</h3>
+          <p class="process__step-desc">
+            Un premier échange de 30 minutes pour cerner vos enjeux, vos ambitions
+            et le contexte exact de votre projet. Sans jargon, sans engagement.
+          </p>
         </div>
 
-        <!-- Right: quote + promises -->
-        <div class="method__right reveal reveal-delay-1">
+        <div class="process__step r d1">
+          <div class="process__step-dot"></div>
+          <p class="process__step-num">02</p>
+          <h3 class="process__step-title">Proposition</h3>
+          <p class="process__step-desc">
+            Une stratégie sur-mesure et un devis transparent sous 48 heures.
+            Pas de poste caché — une roadmap claire et précisément budgétée.
+          </p>
+        </div>
 
-          <blockquote class="method__quote">
-            "Le futur de la communication tient plus du cœur que de la technologie."
-          </blockquote>
+        <div class="process__step r d2">
+          <div class="process__step-dot"></div>
+          <p class="process__step-num">03</p>
+          <h3 class="process__step-title">Création</h3>
+          <p class="process__step-desc">
+            Un processus itératif et collaboratif jusqu'à la version parfaite.
+            Vous validez chaque étape. Vous gardez la main à tout moment.
+          </p>
+        </div>
 
-          <div class="method__promise">
-            <div class="method__promise-item">
-              <div class="method__promise-icon"></div>
-              <span>Un seul interlocuteur du brief à la livraison — Olivier Van Meyel en personne.</span>
-            </div>
-            <div class="method__promise-item">
-              <div class="method__promise-icon"></div>
-              <span>Une tarification juste et transparente, sans surprises en cours de route.</span>
-            </div>
-            <div class="method__promise-item">
-              <div class="method__promise-icon"></div>
-              <span>La réactivité d'une micro-structure avec l'expertise d'une agence confirmée.</span>
-            </div>
-            <div class="method__promise-item">
-              <div class="method__promise-icon"></div>
-              <span>~100% de clients fidèles — notre meilleure carte de visite depuis 2012.</span>
-            </div>
-          </div>
-
+        <div class="process__step r d3">
+          <div class="process__step-dot"></div>
+          <p class="process__step-num">04</p>
+          <h3 class="process__step-title">Livraison</h3>
+          <p class="process__step-desc">
+            Livrables complets, formation à vos outils, accompagnement post-lancement.
+            Notre travail ne s'arrête pas à la livraison.
+          </p>
         </div>
 
       </div>
+
     </div>
   </section>
+
 
   <!-- ============================================================
        CTA FINAL
   ============================================================ -->
   <section class="cta-final" id="contact">
-    <div class="container">
+    <div class="wrap">
       <div class="cta-final__inner">
 
-        <p class="cta-final__label reveal">Premier échange offert</p>
+        <div class="cta-final__eyebrow r">
+          Premier échange offert
+        </div>
 
-        <h2 class="cta-final__title reveal reveal-delay-1">
+        <h2 class="cta-final__title r d1">
           Votre projet mérite<br>une conversation.
         </h2>
 
-        <p class="cta-final__subtitle reveal reveal-delay-2">
+        <p class="cta-final__subtitle r d2">
           Rencontrons-nous. Le premier échange est offert, sans engagement.
         </p>
 
-        <div class="cta-final__actions reveal reveal-delay-3">
+        <div class="cta-final__actions r d3">
           <a href="mailto:hello@ovm-communication.fr" class="btn-primary">
             <span>Prendre rendez-vous →</span>
           </a>
@@ -1978,19 +1718,23 @@
     </div>
   </section>
 
+
   <!-- ============================================================
        FOOTER
   ============================================================ -->
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
 
       <div class="footer__grid">
 
         <div>
-          <p class="footer__logo">OVM Communication</p>
+          <div class="footer__logo">
+            <img src="https://ovm-communication.fr/wp-content/uploads/2023/11/logo-ovm-communication.png"
+                 alt="OVM Communication">
+          </div>
           <p class="footer__baseline">
             L'agence créative qui met votre marque en lumière.<br>
-            Lille · Hauts-de-France · et au-delà.
+            Lambersart · Lille · Hauts-de-France · et au-delà.
           </p>
         </div>
 
@@ -1999,7 +1743,7 @@
           <ul class="footer__links">
             <li><a href="#services">Savoir-faire</a></li>
             <li><a href="#case">Réalisations</a></li>
-            <li><a href="#method">Notre méthode</a></li>
+            <li><a href="#process">Notre méthode</a></li>
             <li><a href="#testimonial">Témoignages</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -2007,18 +1751,19 @@
 
         <div>
           <p class="footer__col-title">Contact</p>
-          <span class="footer__contact-item">
-            <a href="mailto:hello@ovm-communication.fr">hello@ovm-communication.fr</a>
-          </span>
-          <span class="footer__contact-item" style="margin-top: 8px;">
+          <a href="mailto:hello@ovm-communication.fr" class="footer__contact-line">
+            hello@ovm-communication.fr
+          </a>
+          <span class="footer__contact-line" style="pointer-events:none;">
             Lambersart, Lille<br>Hauts-de-France
           </span>
+
           <div style="margin-top: 28px;">
             <p class="footer__col-title">Réseaux</p>
             <div class="footer__social">
-              <a href="#">LinkedIn</a>
-              <a href="#">Behance</a>
-              <a href="#">Instagram</a>
+              <a href="https://www.linkedin.com/company/ovm-communication" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="https://www.behance.net/ovmcommunication" target="_blank" rel="noopener">Behance</a>
+              <a href="https://www.instagram.com/ovmcommunication" target="_blank" rel="noopener">Instagram</a>
             </div>
           </div>
         </div>
@@ -2027,102 +1772,117 @@
 
       <div class="footer__bottom">
         <p class="footer__legal">
-          © 2025 OVM Communication · SARL · RCS Lille 823 002 381 · SIREN 823 002 381
+          © 2026 OVM Communication · SARL · RCS Lille 823 002 381 · SIREN 823 002 381
         </p>
         <p class="footer__legal">
-          Mentions légales · Politique de confidentialité
+          <a href="#" style="color:inherit;">Mentions légales</a>
+          &nbsp;·&nbsp;
+          <a href="#" style="color:inherit;">Politique de confidentialité</a>
         </p>
       </div>
 
     </div>
   </footer>
 
+
   <!-- ============================================================
        JAVASCRIPT
   ============================================================ -->
   <script>
-    /* ---- Nav scroll behaviour ---- */
+    /* ---- Nav scroll ---- */
     const nav = document.getElementById('nav');
-    const onScroll = () => {
-      nav.classList.toggle('scrolled', window.scrollY > 60);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    const syncNav = () => nav.classList.toggle('scrolled', window.scrollY > 56);
+    window.addEventListener('scroll', syncNav, { passive: true });
+    syncNav();
 
     /* ---- Scroll reveal (IntersectionObserver) ---- */
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealObserver.unobserve(entry.target);
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          revealObs.unobserve(e.target);
         }
       });
-    }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px'
-    });
-    revealEls.forEach(el => revealObserver.observe(el));
+    }, { threshold: 0.10, rootMargin: '0px 0px -36px 0px' });
 
-    /* ---- Counter animation ---- */
-    function animateCounter(el) {
-      const target = parseInt(el.dataset.target, 10);
-      const suffix = el.dataset.suffix || '';
-      const duration = 1800;
-      const startTime = performance.now();
+    document.querySelectorAll('.r').forEach(el => revealObs.observe(el));
 
-      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+    /* ---- Animated counters ---- */
+    function runCounter(el) {
+      const target  = parseInt(el.dataset.target, 10);
+      const suffix  = el.dataset.suffix || '';
+      const dur     = 1800;
+      const start   = performance.now();
+      const easeOut = t => 1 - Math.pow(1 - t, 3);
 
-      const step = (now) => {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOut(progress);
-        const current = Math.round(eased * target);
-        el.textContent = current + suffix;
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        }
-      };
-
-      requestAnimationFrame(step);
+      (function tick(now) {
+        const t = Math.min((now - start) / dur, 1);
+        el.textContent = Math.round(easeOut(t) * target) + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+      })(start);
     }
 
-    const counterEls = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          counterObserver.unobserve(entry.target);
+    const ctrObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          runCounter(e.target);
+          ctrObs.unobserve(e.target);
         }
       });
     }, { threshold: 0.5 });
-    counterEls.forEach(el => counterObserver.observe(el));
 
-    /* ---- Hamburger (mobile) ---- */
-    const hamburger = document.getElementById('hamburger');
-    hamburger.addEventListener('click', () => {
-      // Simple mobile nav toggle — expand nav links
+    document.querySelectorAll('.counter').forEach(el => ctrObs.observe(el));
+
+    /* ---- Mobile burger menu ---- */
+    const burger = document.getElementById('burger');
+    let menuOpen = false;
+
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
       const links = document.querySelector('.nav__links');
-      const cta = document.querySelector('.nav__cta');
+      const cta   = document.querySelector('.nav__cta');
 
-      if (links.style.display === 'flex') {
-        links.style.display = '';
-        cta.style.display = '';
-        document.querySelector('.nav').style.background = '';
+      if (menuOpen) {
+        links.style.cssText = `
+          display: flex;
+          flex-direction: column;
+          position: fixed;
+          top: 64px; left: 0; right: 0;
+          background: rgba(250,247,242,0.98);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          padding: 36px 24px 28px;
+          gap: 28px;
+          border-bottom: 1px solid rgba(201,169,110,0.25);
+          z-index: 199;
+        `;
+        cta.style.cssText = `
+          display: block;
+          position: fixed;
+          top: 64px;
+          z-index: 199;
+        `;
+        // Animate burger to X
+        const spans = burger.querySelectorAll('span');
+        spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+        spans[1].style.opacity   = '0';
+        spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
       } else {
-        links.style.cssText = 'display:flex; flex-direction:column; position:fixed; top:80px; left:0; right:0; background:rgba(250,247,242,0.98); padding:32px 24px; gap:24px; backdrop-filter:blur(12px); border-top:1px solid rgba(201,169,110,0.2);';
-        cta.style.cssText = 'display:block; margin: 0 24px; position:fixed; top: calc(80px + 200px); left:0; right:0;';
+        links.style.cssText = '';
+        cta.style.cssText   = '';
+        const spans = burger.querySelectorAll('span');
+        spans[0].style.transform = '';
+        spans[1].style.opacity   = '';
+        spans[2].style.transform = '';
       }
     });
 
-    /* ---- Parallax subtle on hero watermark ---- */
-    window.addEventListener('scroll', () => {
-      const hero = document.querySelector('.hero');
-      const scrolled = window.scrollY;
-      if (scrolled < window.innerHeight) {
-        hero.style.setProperty('--parallax', `${scrolled * 0.15}px`);
-      }
-    }, { passive: true });
+    /* Close menu on link click */
+    document.querySelectorAll('.nav__links a').forEach(a => {
+      a.addEventListener('click', () => {
+        if (menuOpen) burger.click();
+      });
+    });
   </script>
 
 </body>
