@@ -1,0 +1,1726 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OVM Communication — Agence créative à Lille</title>
+  <meta name="description" content="OVM Communication, agence de communication à Lille depuis 2012. Identité visuelle, création web, motion design, SEO, print et social media. Fondée par Olivier Van Meyel." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIABLES
+    ============================================================ */
+    :root {
+      --bg-primary:    #0D0F14;
+      --bg-secondary:  #141720;
+      --bg-card:       #1A1D2E;
+      --bg-footer:     #0A0C10;
+
+      --violet:        #7C3AED;
+      --blue:          #2563EB;
+      --cyan:          #06B6D4;
+
+      --gradient:      linear-gradient(135deg, #7C3AED, #2563EB, #06B6D4);
+      --gradient-text: linear-gradient(135deg, #7C3AED 0%, #2563EB 50%, #06B6D4 100%);
+      --gradient-border: linear-gradient(135deg, #7C3AED, #2563EB, #06B6D4);
+
+      --text-primary:  #F8FAFC;
+      --text-secondary:#94A3B8;
+      --text-muted:    #475569;
+      --border-subtle: rgba(255,255,255,0.07);
+      --border-card:   rgba(255,255,255,0.07);
+
+      --font-display:  'Syne', sans-serif;
+      --font-body:     'IBM Plex Sans', sans-serif;
+
+      --radius-sm:     8px;
+      --radius-md:     12px;
+      --radius-lg:     20px;
+      --radius-full:   9999px;
+
+      --transition:    0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       RESET & BASE
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      /* Dot grid background */
+      background-image: radial-gradient(circle, rgba(255,255,255,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+    button { cursor: pointer; font-family: inherit; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ============================================================
+       GRADIENT TEXT UTILITY
+    ============================================================ */
+    .gradient-text {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+
+    /* ============================================================
+       SECTION SPACING
+    ============================================================ */
+    section { position: relative; }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      background: rgba(13, 15, 20, 0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+      transition: background var(--transition);
+    }
+
+    .nav-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .nav-logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: inline-block;
+      margin-left: 3px;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      transition: color var(--transition);
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      position: relative;
+      padding: 9px 22px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      transition: color var(--transition);
+      flex-shrink: 0;
+    }
+    .nav-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-full);
+      padding: 1px;
+      background: var(--gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+    .nav-cta:hover {
+      background: var(--gradient);
+      color: #fff;
+    }
+    .nav-cta:hover .nav-cta-text {
+      background: none;
+      -webkit-text-fill-color: #fff;
+      color: #fff;
+    }
+    .nav-cta-text {
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: var(--transition);
+    }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px;
+      cursor: pointer;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background: var(--text-secondary);
+      transition: var(--transition);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Badge */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      position: relative;
+      margin-bottom: 36px;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--text-secondary);
+      background: rgba(124, 58, 237, 0.08);
+    }
+    .hero-badge::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-full);
+      padding: 1px;
+      background: var(--gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+    .hero-badge-dot {
+      font-size: 0.85rem;
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Title */
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(3rem, 7vw, 6rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+
+    /* Subtitle typing */
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.75;
+      margin-bottom: 44px;
+      min-height: 3.5em;
+    }
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      background: var(--cyan);
+      margin-left: 2px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* CTAs */
+    .hero-ctas {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 30px;
+      border-radius: var(--radius-full);
+      background: var(--gradient);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.95rem;
+      border: none;
+      transition: opacity var(--transition), transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 0 28px rgba(124, 58, 237, 0.35);
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 0 44px rgba(124, 58, 237, 0.5);
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 14px 8px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      transition: color var(--transition), gap var(--transition);
+    }
+    .btn-ghost:hover {
+      color: var(--text-primary);
+      gap: 10px;
+    }
+
+    /* Floating shapes */
+    .hero-shapes {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+    }
+    .shape-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle at center, #7C3AED, transparent 70%);
+      top: -120px; right: -80px;
+      animation: float1 9s ease-in-out infinite;
+    }
+    .shape-2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at center, #06B6D4, transparent 70%);
+      bottom: 60px; right: 200px;
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      animation: float2 11s ease-in-out infinite;
+      opacity: 0.09;
+    }
+    .shape-3 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle at center, #2563EB, transparent 70%);
+      top: 40%; left: 55%;
+      border-radius: 50%;
+      animation: float3 8s ease-in-out infinite;
+      opacity: 0.1;
+    }
+    .shape-4 {
+      width: 120px; height: 120px;
+      background: var(--gradient);
+      top: 20%; right: 30%;
+      border-radius: var(--radius-md);
+      transform: rotate(22deg);
+      animation: float4 13s ease-in-out infinite;
+      opacity: 0.07;
+    }
+    @keyframes float1 {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33% { transform: translate(-20px, 30px) scale(1.04); }
+      66% { transform: translate(15px, -15px) scale(0.97); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translate(0,0) rotate(0deg); }
+      50% { transform: translate(25px, -20px) rotate(15deg); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translate(0,0); }
+      40% { transform: translate(-18px, 22px); }
+      80% { transform: translate(12px, -8px); }
+    }
+    @keyframes float4 {
+      0%, 100% { transform: rotate(22deg) translate(0,0); }
+      50% { transform: rotate(38deg) translate(-12px, 18px); }
+    }
+
+    /* SVG Particles */
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ============================================================
+       METRICS / CHIFFRES CLÉS
+    ============================================================ */
+    .metrics {
+      background: var(--bg-secondary);
+      padding: 80px 24px;
+      border-top: 1px solid transparent;
+      border-bottom: 1px solid transparent;
+      position: relative;
+    }
+    .metrics::before,
+    .metrics::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 1px;
+      background: var(--gradient);
+      opacity: 0.35;
+    }
+    .metrics::before { top: 0; }
+    .metrics::after { bottom: 0; }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .metric-item {
+      padding: 24px 32px;
+      text-align: center;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .metric-item:last-child { border-right: none; }
+
+    .metric-number {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services {
+      padding: 100px 24px;
+    }
+
+    .section-header {
+      margin-bottom: 60px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-weight: 400;
+      margin-bottom: 16px;
+      font-family: var(--font-body);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+    .section-subtitle {
+      margin-top: 16px;
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      font-weight: 300;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+      position: relative;
+      border: 1px solid var(--border-card);
+      transition: transform var(--transition), box-shadow var(--transition);
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-md);
+      padding: 1px;
+      background: var(--gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+    .service-card:hover::before { opacity: 1; }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 30px rgba(124,58,237,0.12);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 22px;
+      color: var(--cyan);
+    }
+    .service-card:nth-child(2) .service-icon { color: var(--violet); }
+    .service-card:nth-child(3) .service-icon { color: var(--blue); }
+    .service-card:nth-child(4) .service-icon { color: #a855f7; }
+    .service-card:nth-child(5) .service-icon { color: var(--cyan); }
+    .service-card:nth-child(6) .service-icon { color: var(--violet); }
+
+    .service-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       CAS CLIENT
+    ============================================================ */
+    .case-study {
+      background: var(--bg-secondary);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-study-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      background: var(--gradient);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .case-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .case-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .case-metrics {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .case-metric {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .case-metric-value {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.7rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .case-metric-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
+    .btn-outline-gradient {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border-radius: var(--radius-full);
+      position: relative;
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.9rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      transition: color var(--transition), background var(--transition);
+    }
+    .btn-outline-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-full);
+      padding: 1px;
+      background: var(--gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: destination-out;
+      mask-composite: exclude;
+    }
+    .btn-outline-gradient:hover {
+      background: rgba(124,58,237,0.1);
+      color: var(--text-primary);
+    }
+
+    /* Decoration right */
+    .case-deco {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-deco-shape {
+      width: 320px;
+      height: 320px;
+      border-radius: 30% 70% 55% 45% / 40% 50% 50% 60%;
+      background: conic-gradient(from 220deg, #7C3AED22, #2563EB33, #06B6D422, #7C3AED22);
+      border: 1px solid rgba(124,58,237,0.2);
+      animation: morphBlob 12s ease-in-out infinite;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @keyframes morphBlob {
+      0%, 100% { border-radius: 30% 70% 55% 45% / 40% 50% 50% 60%; }
+      33%       { border-radius: 70% 30% 40% 60% / 55% 45% 55% 45%; }
+      66%       { border-radius: 45% 55% 70% 30% / 35% 65% 45% 55%; }
+    }
+    .case-deco-inner {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 40% 40%, rgba(124,58,237,0.25), rgba(6,182,212,0.1) 70%, transparent);
+      border: 1px solid rgba(6,182,212,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .case-deco-icon {
+      width: 64px;
+      height: 64px;
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       TÉMOIGNAGE
+    ============================================================ */
+    .testimonial {
+      padding: 100px 24px;
+      text-align: center;
+    }
+    .testimonial-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .testimonial-stars {
+      font-size: 1.3rem;
+      color: var(--cyan);
+      letter-spacing: 4px;
+      margin-bottom: 32px;
+    }
+    .testimonial-quote {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      line-height: 1.65;
+      color: var(--text-primary);
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .testimonial-quote::before {
+      content: '"';
+      font-family: var(--font-display);
+      font-size: 5rem;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 0;
+      position: absolute;
+      top: 20px;
+      left: -30px;
+      opacity: 0.4;
+    }
+    .testimonial-author {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+
+    /* ============================================================
+       LOGOS CLIENTS
+    ============================================================ */
+    .clients {
+      padding: 60px 24px;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .clients-label {
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+    .clients-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+    .clients-list li {
+      padding: 8px 36px;
+      border-right: 1px solid var(--border-subtle);
+    }
+    .clients-list li:last-child { border-right: none; }
+    .client-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      opacity: 0.35;
+      transition: opacity var(--transition);
+    }
+    .client-name:hover { opacity: 1; }
+
+    /* ============================================================
+       PROCESS
+    ============================================================ */
+    .process {
+      padding: 100px 24px;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 64px;
+    }
+    /* Connecting line */
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 52px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: var(--gradient);
+      opacity: 0.5;
+      z-index: 0;
+    }
+
+    .process-step {
+      padding: 0 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 3.5rem;
+      line-height: 1;
+      background: var(--gradient-text);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+    }
+    .step-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    .cta-final {
+      padding: 120px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Mesh gradient bg */
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 25% 50%, rgba(124,58,237,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 75% 50%, rgba(37,99,235,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 10%, rgba(6,182,212,0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-final-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .cta-final-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+    .cta-final-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 44px;
+    }
+    .cta-final-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .cta-final-email {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .cta-final-email a {
+      color: var(--cyan);
+      transition: opacity var(--transition);
+    }
+    .cta-final-email a:hover { opacity: 0.75; }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--bg-footer);
+      padding: 72px 24px 40px;
+      position: relative;
+    }
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--gradient);
+      opacity: 0.4;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.5rem;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 16px;
+    }
+    .footer-tagline {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 280px;
+      margin-bottom: 28px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+      color: var(--text-secondary);
+    }
+    .footer-social a:hover {
+      background: rgba(124,58,237,0.15);
+      border-color: rgba(124,58,237,0.5);
+      color: var(--text-primary);
+    }
+
+    .footer-col-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--text-primary); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    .footer-legal {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ============================================================
+       SCROLL REVEAL
+    ============================================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       RESPONSIVE — TABLET 768px
+    ============================================================ */
+    @media (max-width: 900px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .metric-item:nth-child(2) { border-right: none; }
+      .metric-item:nth-child(3) {
+        border-top: 1px solid var(--border-subtle);
+      }
+      .metric-item:nth-child(4) {
+        border-top: 1px solid var(--border-subtle);
+        border-right: none;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .case-study-inner {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      .case-deco { order: -1; }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+      .process-steps::before { display: none; }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { padding: 100px 20px 64px; }
+      .hero-title { font-size: clamp(2.4rem, 9vw, 4rem); }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .clients-list li {
+        padding: 8px 20px;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+      .clients-list li:last-child { border-bottom: none; }
+      .clients-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+
+      .process-steps { grid-template-columns: 1fr; }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .case-metrics { flex-direction: column; gap: 20px; }
+
+      .testimonial-quote::before { left: -10px; font-size: 3rem; top: 10px; }
+    }
+
+    /* ============================================================
+       BORDER GRADIENT ANIMATION ON SERVICE CARDS
+    ============================================================ */
+    @keyframes borderRotate {
+      from { --angle: 0deg; }
+      to   { --angle: 360deg; }
+    }
+    @property --angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+    .service-card:hover::before {
+      background: conic-gradient(from var(--angle), #7C3AED, #2563EB, #06B6D4, #7C3AED);
+      animation: borderRotate 3s linear infinite;
+      opacity: 1;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo" aria-label="OVM Communication">
+        OVM<span class="nav-logo-dot" aria-hidden="true"></span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#services">Savoir-faire</a></li>
+        <li><a href="#case-study">Réalisations</a></li>
+        <li><a href="#process">À propos</a></li>
+        <li><a href="#cta-final">Contact</a></li>
+      </ul>
+
+      <a href="#cta-final" class="nav-cta">
+        <span class="nav-cta-text">Brief gratuit</span>
+      </a>
+
+      <button class="nav-hamburger" aria-label="Menu" id="hamburger">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <!-- Floating shapes -->
+    <div class="hero-shapes" aria-hidden="true">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+    </div>
+
+    <!-- SVG Particles -->
+    <svg class="hero-particles" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12%" cy="30%" r="1.5" fill="#7C3AED" opacity="0.5">
+        <animate attributeName="cy" values="30%;28%;32%;30%" dur="6s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="82%" cy="20%" r="1" fill="#06B6D4" opacity="0.6">
+        <animate attributeName="cy" values="20%;18%;22%;20%" dur="8s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="65%" cy="75%" r="1.5" fill="#2563EB" opacity="0.4">
+        <animate attributeName="cy" values="75%;73%;77%;75%" dur="7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="30%" cy="60%" r="1" fill="#7C3AED" opacity="0.35">
+        <animate attributeName="cy" values="60%;58%;62%;60%" dur="9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="92%" cy="55%" r="1.5" fill="#06B6D4" opacity="0.4">
+        <animate attributeName="cy" values="55%;53%;57%;55%" dur="5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="48%" cy="15%" r="1" fill="#2563EB" opacity="0.5">
+        <animate attributeName="cy" values="15%;13%;17%;15%" dur="10s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Subtle crosses -->
+      <line x1="88%" y1="38%" x2="88.6%" y2="38.6%" stroke="#7C3AED" stroke-width="1" opacity="0.3"/>
+      <line x1="88.6%" y1="38%" x2="88%" y2="38.6%" stroke="#7C3AED" stroke-width="1" opacity="0.3"/>
+      <line x1="18%" y1="70%" x2="18.5%" y2="70.5%" stroke="#06B6D4" stroke-width="1" opacity="0.3"/>
+      <line x1="18.5%" y1="70%" x2="18%" y2="70.5%" stroke="#06B6D4" stroke-width="1" opacity="0.3"/>
+    </svg>
+
+    <div class="hero-inner">
+      <!-- Badge -->
+      <div class="hero-badge reveal">
+        <span class="hero-badge-dot">✦</span>
+        Agence de communication&nbsp;&nbsp;·&nbsp;&nbsp;Lille&nbsp;&nbsp;·&nbsp;&nbsp;Depuis 2012
+      </div>
+
+      <!-- Title -->
+      <h1 class="hero-title reveal reveal-delay-1">
+        La communication<br>
+        qui fait la<br>
+        <span class="gradient-text">différence.</span>
+      </h1>
+
+      <!-- Subtitle typing -->
+      <p class="hero-subtitle reveal reveal-delay-2" id="typing-target" aria-label="Nous aidons les PME et entrepreneurs ambitieux à construire des marques visibles, cohérentes et performantes.">
+        <span class="typing-cursor" aria-hidden="true"></span>
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas reveal reveal-delay-3">
+        <a href="#cta-final" class="btn-primary">
+          Démarrer un projet
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#case-study" class="btn-ghost">
+          Voir nos réalisations
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHIFFRES CLÉS
+  ============================================================ -->
+  <section class="metrics" id="metrics">
+    <div class="container">
+      <div class="metrics-grid">
+
+        <div class="metric-item reveal">
+          <span class="metric-number" data-target="12" data-suffix="+ ans">0</span>
+          <span class="metric-label">d'expérience en communication<br>et identité de marque</span>
+        </div>
+
+        <div class="metric-item reveal reveal-delay-1">
+          <span class="metric-number" data-target="50" data-suffix="+ clients">0</span>
+          <span class="metric-label">PME et entrepreneurs<br>accompagnés et transformés</span>
+        </div>
+
+        <div class="metric-item reveal reveal-delay-2">
+          <span class="metric-number" data-target="100" data-suffix="% fidélisation">0</span>
+          <span class="metric-label">taux de rétention client,<br>une confiance qui se mesure</span>
+        </div>
+
+        <div class="metric-item reveal reveal-delay-3">
+          <span class="metric-number" data-target="6" data-suffix=" expertises">0</span>
+          <span class="metric-label">domaines maîtrisés,<br>un interlocuteur unique</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Savoir-faire</span>
+        <h2 class="section-title">Ce qu'on maîtrise.</h2>
+        <p class="section-subtitle">Six disciplines, une vision cohérente. Pas de sous-traitance cachée, pas de promesses vides.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- 1 -->
+        <article class="service-card reveal">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+          </svg>
+          <h3 class="service-title">Identité Visuelle</h3>
+          <p class="service-desc">Logos, chartes graphiques, systèmes de marque cohérents et durables. Votre image, construite pour durer.</p>
+        </article>
+
+        <!-- 2 -->
+        <article class="service-card reveal reveal-delay-1">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M3 9h18M9 21V9"/>
+          </svg>
+          <h3 class="service-title">Création Web</h3>
+          <p class="service-desc">Sites élégants, rapides, SEO-ready et orientés conversion. Un site qui travaille pour vous, 24h/24.</p>
+        </article>
+
+        <!-- 3 -->
+        <article class="service-card reveal reveal-delay-2">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <polygon points="5,3 19,12 5,21"/>
+          </svg>
+          <h3 class="service-title">Motion Design</h3>
+          <p class="service-desc">Animation, vidéo, contenu dynamique pour capter l'attention. Le mouvement au service du message.</p>
+        </article>
+
+        <!-- 4 -->
+        <article class="service-card reveal reveal-delay-1">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.35-4.35"/>
+            <path d="M11 8v6M8 11h6"/>
+          </svg>
+          <h3 class="service-title">SEO</h3>
+          <p class="service-desc">Stratégie éditoriale et optimisation technique pour dominer les résultats. Visibilité durable, trafic qualifié.</p>
+        </article>
+
+        <!-- 5 -->
+        <article class="service-card reveal reveal-delay-2">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+            <polyline points="10 9 9 9 8 9"/>
+          </svg>
+          <h3 class="service-title">Print</h3>
+          <p class="service-desc">Supports papier impactants. Parce qu'on touche aussi le monde physique — et qu'il compte encore.</p>
+        </article>
+
+        <!-- 6 -->
+        <article class="service-card reveal reveal-delay-3">
+          <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+          <h3 class="service-title">Social Media</h3>
+          <p class="service-desc">Présence, contenu, engagement. La régularité qui construit une marque et installe la confiance dans la durée.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CAS CLIENT
+  ============================================================ -->
+  <section class="case-study" id="case-study">
+    <div class="case-study-inner">
+
+      <div>
+        <span class="case-tag reveal">Étude de cas</span>
+        <h2 class="case-title reveal reveal-delay-1">Refonte complète pour un cabinet de conseil lillois</h2>
+        <p class="case-subtitle reveal reveal-delay-2">Identité visuelle + site web + stratégie SEO. Résultat : une marque transformée et un pipeline commercial relancé. Du repositionnement à l'acquisition, de A à Z.</p>
+
+        <div class="case-metrics reveal reveal-delay-2">
+          <div class="case-metric">
+            <span class="case-metric-value">+340%</span>
+            <span class="case-metric-label">trafic organique</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">×3</span>
+            <span class="case-metric-label">leads entrants</span>
+          </div>
+          <div class="case-metric">
+            <span class="case-metric-value">94%</span>
+            <span class="case-metric-label">satisfaction client</span>
+          </div>
+        </div>
+
+        <a href="#cta-final" class="btn-outline-gradient reveal reveal-delay-3">
+          Lire l'étude de cas
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="case-deco reveal reveal-delay-1" aria-hidden="true">
+        <div class="case-deco-shape">
+          <div class="case-deco-inner">
+            <svg class="case-deco-icon" viewBox="0 0 64 64" fill="none" stroke="url(#grad-icon)" stroke-width="1.5">
+              <defs>
+                <linearGradient id="grad-icon" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#7C3AED"/>
+                  <stop offset="100%" stop-color="#06B6D4"/>
+                </linearGradient>
+              </defs>
+              <circle cx="32" cy="32" r="20"/>
+              <path d="M22 32l7 7 13-13"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TÉMOIGNAGE
+  ============================================================ -->
+  <section class="testimonial" id="testimonial">
+    <div class="testimonial-inner">
+      <div class="testimonial-stars reveal" aria-label="5 étoiles">★★★★★</div>
+      <blockquote class="testimonial-quote reveal reveal-delay-1">
+        OVM a compris nos enjeux immédiatement. Olivier est direct, honnête sur ce qui fonctionne ou non, et livre exactement ce qu'il promet. C'est rare.
+      </blockquote>
+      <cite class="testimonial-author reveal reveal-delay-2">
+        Marie L. — Fondatrice, cabinet de coaching, Lille
+      </cite>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LOGOS CLIENTS
+  ============================================================ -->
+  <section class="clients" id="clients">
+    <div class="container">
+      <p class="clients-label">Ils nous font confiance</p>
+      <ul class="clients-list" role="list">
+        <li><span class="client-name">Atelier Nord</span></li>
+        <li><span class="client-name">Groupe Avenir</span></li>
+        <li><span class="client-name">Studio Forma</span></li>
+        <li><span class="client-name">Conseil RH Pro</span></li>
+        <li><span class="client-name">La Belle Scène</span></li>
+        <li><span class="client-name">Nordtech</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROCESS
+  ============================================================ -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Méthodologie</span>
+        <h2 class="section-title">Le process.<br>Sans surprise.</h2>
+        <p class="section-subtitle">Quatre étapes claires, une communication franche à chaque stade. Vous savez toujours où on en est.</p>
+      </div>
+
+      <div class="process-steps">
+
+        <div class="process-step reveal">
+          <span class="step-number">01</span>
+          <h3 class="step-title">Brief</h3>
+          <p class="step-desc">30 min pour tout comprendre. Vos enjeux, votre marché, vos ambitions. On écoute avant de parler.</p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-1">
+          <span class="step-number">02</span>
+          <h3 class="step-title">Stratégie</h3>
+          <p class="step-desc">Votre plan sur-mesure en 48h. Périmètre clair, budget honnête, calendrier réaliste.</p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-2">
+          <span class="step-number">03</span>
+          <h3 class="step-title">Production</h3>
+          <p class="step-desc">Itérations jusqu'à la perfection. Vous validez chaque étape. Pas de surprise à la livraison.</p>
+        </div>
+
+        <div class="process-step reveal reveal-delay-3">
+          <span class="step-number">04</span>
+          <h3 class="step-title">Livraison</h3>
+          <p class="step-desc">Livrables complets + suivi post-lancement. On ne disparaît pas une fois le projet terminé.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL
+  ============================================================ -->
+  <section class="cta-final" id="cta-final">
+    <div class="cta-final-inner">
+      <h2 class="cta-final-title reveal">
+        Prêts à construire<br>
+        quelque chose<br>
+        <span class="gradient-text">d'exceptionnel ?</span>
+      </h2>
+      <p class="cta-final-sub reveal reveal-delay-1">Le premier échange est gratuit. Toujours.</p>
+      <div class="cta-final-actions reveal reveal-delay-2">
+        <a href="mailto:hello@ovm-communication.fr" class="btn-primary">
+          Démarrer maintenant
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="cta-final-email">
+          ou écrivez directement à <a href="mailto:hello@ovm-communication.fr">hello@ovm-communication.fr</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="footer-inner">
+
+      <!-- Brand col -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          OVM<span class="nav-logo-dot" style="margin-left:4px;" aria-hidden="true"></span>
+        </div>
+        <p class="footer-tagline">L'agence qui met le cœur dans la technologie. Communication créative à Lille depuis 2012.</p>
+        <nav class="footer-social" aria-label="Réseaux sociaux">
+          <!-- LinkedIn -->
+          <a href="#" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <!-- Behance -->
+          <a href="#" aria-label="Behance">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+              <path d="M3 9h8a3 3 0 0 1 0 6H3V9z"/>
+              <path d="M3 9V6h7a2 2 0 1 1 0 4"/>
+              <line x1="14" y1="8" x2="21" y2="8"/>
+              <path d="M14 13h7a3.5 3.5 0 0 0-7 0z"/>
+            </svg>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Navigation col -->
+      <div>
+        <p class="footer-col-title">Navigation</p>
+        <nav class="footer-links">
+          <a href="#services">Savoir-faire</a>
+          <a href="#case-study">Réalisations</a>
+          <a href="#process">Notre process</a>
+          <a href="#testimonial">Témoignages</a>
+          <a href="#cta-final">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Contact col -->
+      <div>
+        <p class="footer-col-title">Contact</p>
+        <nav class="footer-links">
+          <a href="mailto:hello@ovm-communication.fr">hello@ovm-communication.fr</a>
+          <a href="#">Lambersart, Lille (59)</a>
+          <a href="#">Devis gratuit</a>
+          <a href="#">Mentions légales</a>
+        </nav>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 OVM Communication · SARL · RCS Lille 823 002 381</p>
+      <p class="footer-legal">Design &amp; développement : OVM Communication</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    // -------------------------------------------------------
+    // 1. TYPING EFFECT
+    // -------------------------------------------------------
+    (function () {
+      const target = document.getElementById('typing-target');
+      if (!target) return;
+      const text = "Nous aidons les PME et entrepreneurs ambitieux à construire des marques visibles, cohérentes et performantes.";
+      let i = 0;
+      let textNode = document.createTextNode('');
+      const cursor = target.querySelector('.typing-cursor');
+
+      // Insert text node before cursor
+      target.insertBefore(textNode, cursor);
+
+      function type() {
+        if (i <= text.length) {
+          textNode.nodeValue = text.slice(0, i);
+          i++;
+          setTimeout(type, i === 1 ? 900 : 28);
+        }
+      }
+
+      // Start after hero reveal (small delay)
+      setTimeout(type, 1400);
+    })();
+
+    // -------------------------------------------------------
+    // 2. SCROLL REVEAL
+    // -------------------------------------------------------
+    (function () {
+      const els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window)) {
+        els.forEach(el => el.classList.add('visible'));
+        return;
+      }
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      );
+      els.forEach(el => observer.observe(el));
+    })();
+
+    // -------------------------------------------------------
+    // 3. ANIMATED COUNTERS
+    // -------------------------------------------------------
+    (function () {
+      const metrics = document.querySelectorAll('.metric-number[data-target]');
+      if (!metrics.length) return;
+
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 1600;
+        const start = performance.now();
+
+        function step(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          // Ease-out cubic
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.round(eased * target);
+          el.textContent = value + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      metrics.forEach(m => observer.observe(m));
+    })();
+
+    // -------------------------------------------------------
+    // 4. NAV SCROLL STATE
+    // -------------------------------------------------------
+    (function () {
+      const nav = document.getElementById('nav');
+      if (!nav) return;
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          nav.style.background = 'rgba(10, 12, 16, 0.96)';
+        } else {
+          nav.style.background = 'rgba(13, 15, 20, 0.82)';
+        }
+      }, { passive: true });
+    })();
+
+    // -------------------------------------------------------
+    // 5. MOBILE HAMBURGER (basic toggle)
+    // -------------------------------------------------------
+    (function () {
+      const btn = document.getElementById('hamburger');
+      if (!btn) return;
+      const links = document.querySelector('.nav-links');
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !open);
+        if (links) {
+          if (!open) {
+            links.style.display = 'flex';
+            links.style.flexDirection = 'column';
+            links.style.position = 'fixed';
+            links.style.top = '68px';
+            links.style.left = '0';
+            links.style.right = '0';
+            links.style.background = 'rgba(10,12,16,0.98)';
+            links.style.padding = '24px';
+            links.style.gap = '20px';
+            links.style.borderBottom = '1px solid rgba(255,255,255,0.07)';
+            links.style.backdropFilter = 'blur(18px)';
+            links.style.zIndex = '999';
+          } else {
+            links.removeAttribute('style');
+          }
+        }
+      });
+      // Close on link click
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', () => {
+          if (links) links.removeAttribute('style');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    })();
+  </script>
+
+</body>
+</html>

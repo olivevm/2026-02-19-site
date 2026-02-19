@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OVM Communication — L'agence qui met votre marque en lumière</title>
+  <meta name="description" content="OVM Communication, agence créative à Lille depuis 2012. Identité visuelle, sites web, motion design, SEO. Un interlocuteur unique, une exigence constante." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIABLES & RESET
+    ============================================================ */
+    :root {
+      --cream:        #FAF7F2;
+      --cream-dark:   #F0EBE2;
+      --white:        #FFFFFF;
+      --bordeaux:     #6B2737;
+      --bordeaux-dark:#4E1B27;
+      --gold:         #C9A96E;
+      --gold-light:   #D9BC8A;
+      --text:         #1A0F0A;
+      --text-light:   #6B5B50;
+      --text-muted:   #9C8878;
+      --border:       rgba(201,169,110,0.3);
+
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body:    'Jost', system-ui, sans-serif;
+
+      --section-pad: 140px;
+      --section-pad-sm: 80px;
+
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--cream);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ============================================================
+       UTILITIES
+    ============================================================ */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .gold-rule {
+      display: inline-block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+    }
+
+    /* Section-left gold accent line */
+    .section-mark {
+      position: relative;
+    }
+    .section-mark::before {
+      content: '';
+      position: absolute;
+      left: -24px;
+      top: 0;
+      bottom: 0;
+      width: 1.5px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ============================================================
+       NAVIGATION
+    ============================================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 28px 0;
+      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(250, 247, 242, 0.96);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 18px 0;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .nav__logo {
+      font-family: var(--ff-display);
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--bordeaux);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav__links a {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color var(--transition);
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+
+    .nav__links a:hover {
+      color: var(--bordeaux);
+    }
+    .nav__links a:hover::after {
+      width: 100%;
+    }
+
+    .nav__cta {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bordeaux);
+      border: 1px solid var(--bordeaux);
+      padding: 11px 22px;
+      position: relative;
+      overflow: hidden;
+      transition: color var(--transition);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .nav__cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--bordeaux);
+      transform: translateX(-101%);
+      transition: transform var(--transition);
+    }
+
+    .nav__cta:hover {
+      color: var(--cream);
+    }
+    .nav__cta:hover::before {
+      transform: translateX(0);
+    }
+
+    .nav__cta span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--bordeaux);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    /* ============================================================
+       HERO
+    ============================================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Watermark "O" */
+    .hero::before {
+      content: 'O';
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: 40vw;
+      color: #F0EBE2;
+      position: absolute;
+      right: -8vw;
+      top: 50%;
+      transform: translateY(-55%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 60fr 40fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .hero__left {
+      padding: var(--section-pad) 0;
+    }
+
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .hero__eyebrow-text {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero__title {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: clamp(54px, 6.5vw, 96px);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+
+    .hero__title em {
+      font-style: italic;
+      color: var(--bordeaux);
+    }
+
+    .hero__subtitle {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--text-light);
+      max-width: 520px;
+      margin-bottom: 56px;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--ff-body);
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      background: var(--bordeaux);
+      padding: 18px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: color var(--transition);
+      display: inline-block;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gold);
+      transform: translateY(101%);
+      transition: transform var(--transition);
+    }
+
+    .btn-primary:hover {
+      color: var(--text);
+    }
+    .btn-primary:hover::before {
+      transform: translateY(0);
+    }
+
+    .btn-primary span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-ghost {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      color: var(--bordeaux);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap var(--transition);
+    }
+
+    .btn-ghost:hover {
+      gap: 18px;
+    }
+
+    .btn-ghost .arrow {
+      display: inline-block;
+      transition: transform var(--transition);
+    }
+
+    .btn-ghost:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    .hero__right {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 0;
+    }
+
+    /* Abstract geometric composition */
+    .hero__geo {
+      position: relative;
+      width: 340px;
+      height: 340px;
+    }
+
+    .hero__geo-outer {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid var(--bordeaux);
+    }
+
+    .hero__geo-outer::before {
+      content: '';
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero__geo-fill {
+      position: absolute;
+      inset: 40px;
+      border-radius: 50%;
+      background: var(--bordeaux);
+      opacity: 0.08;
+    }
+
+    .hero__geo-inner {
+      position: absolute;
+      inset: 70px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      background: transparent;
+    }
+
+    .hero__geo-core {
+      position: absolute;
+      inset: 110px;
+      border-radius: 50%;
+      background: var(--bordeaux);
+      opacity: 0.85;
+    }
+
+    .hero__geo-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .hero__geo-dot:nth-child(5) { top: -3px; left: 50%; transform: translateX(-50%); }
+    .hero__geo-dot:nth-child(6) { bottom: -3px; left: 50%; transform: translateX(-50%); }
+    .hero__geo-dot:nth-child(7) { left: -3px; top: 50%; transform: translateY(-50%); }
+    .hero__geo-dot:nth-child(8) { right: -3px; top: 50%; transform: translateY(-50%); }
+
+    .hero__geo-line-h {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.3;
+      transform: translateY(-50%);
+    }
+
+    .hero__geo-line-v {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.3;
+      transform: translateX(-50%);
+    }
+
+    .hero__badge {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero__badge::before,
+    .hero__badge::after {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ============================================================
+       STATS / CHIFFRES CLÉS
+    ============================================================ */
+    .stats {
+      background: var(--bordeaux-dark);
+      padding: var(--section-pad) 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,169,110,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .stats__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+
+    .stats__item {
+      padding: 0 48px;
+      position: relative;
+      text-align: center;
+    }
+
+    .stats__item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 1px;
+      background: rgba(201,169,110,0.2);
+    }
+
+    .stats__number {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: clamp(52px, 6vw, 80px);
+      line-height: 1;
+      color: var(--cream);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .stats__number .suffix {
+      font-size: 0.6em;
+      color: var(--gold);
+      letter-spacing: 0;
+    }
+
+    .stats__rule {
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 16px;
+    }
+
+    .stats__label {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       SERVICES
+    ============================================================ */
+    .services {
+      padding: var(--section-pad) 0;
+      background: var(--cream);
+    }
+
+    .services__header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-bottom: 80px;
+      align-items: end;
+    }
+
+    .services__title {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: clamp(40px, 4vw, 64px);
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .services__intro {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text-light);
+      padding-bottom: 8px;
+    }
+
+    .services__list {
+      border-top: 1px solid var(--border);
+    }
+
+    .service-item {
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-item__inner {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr auto;
+      gap: 32px;
+      align-items: center;
+      padding: 36px 0;
+      transition: padding var(--transition);
+    }
+
+    .service-item__num {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: 15px;
+      letter-spacing: 0.08em;
+      color: var(--gold);
+    }
+
+    .service-item__name {
+      font-family: var(--ff-display);
+      font-weight: 400;
+      font-size: 26px;
+      color: var(--bordeaux);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    /* Slide underline from left */
+    .service-item__name::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .service-item:hover .service-item__name::after {
+      width: 100%;
+    }
+
+    .service-item__desc {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--text-light);
+    }
+
+    .service-item__tag {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-align: right;
+    }
+
+    /* Hover bg sweep */
+    .service-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(107,39,55,0.03), transparent);
+      transform: translateX(-101%);
+      transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      pointer-events: none;
+    }
+
+    .service-item:hover::before {
+      transform: translateX(0);
+    }
+
+    /* ============================================================
+       CAS CLIENT
+    ============================================================ */
+    .case {
+      padding: var(--section-pad) 0;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.4;
+    }
+
+    .case__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: center;
+    }
+
+    .case__left {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .case__label {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .case__pullquote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(32px, 3.5vw, 52px);
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 36px;
+    }
+
+    .case__desc {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--text-light);
+      margin-bottom: 40px;
+    }
+
+    .case__link {
+      font-family: var(--ff-body);
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      color: var(--bordeaux);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      padding-bottom: 3px;
+      transition: gap var(--transition);
+    }
+
+    .case__link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--bordeaux);
+      transform: scaleX(0.3);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .case__link:hover {
+      gap: 18px;
+    }
+
+    .case__link:hover::after {
+      transform: scaleX(1);
+    }
+
+    .case__right {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .case__metric {
+      border: 1px solid var(--gold);
+      padding: 32px 36px;
+      position: relative;
+    }
+
+    .case__metric::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--gold);
+    }
+
+    .case__metric-value {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: 48px;
+      color: var(--bordeaux);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .case__metric-label {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       TESTIMONIAL
+    ============================================================ */
+    .testimonial {
+      padding: var(--section-pad) 0;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonial__quotes {
+      font-family: var(--ff-display);
+      font-size: 160px;
+      line-height: 0.6;
+      color: var(--gold);
+      opacity: 0.18;
+      position: absolute;
+      top: -20px;
+      left: -40px;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .testimonial__quotes-close {
+      bottom: -60px;
+      right: -40px;
+      top: auto;
+      left: auto;
+    }
+
+    .testimonial__text {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.65;
+      color: var(--bordeaux);
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial__rule {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 24px;
+    }
+
+    .testimonial__author {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       LOGOS CLIENTS
+    ============================================================ */
+    .clients {
+      padding: 80px 0;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .clients__label {
+      text-align: center;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+    }
+
+    .clients__row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .clients__name {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 40px;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .clients__name:hover {
+      color: var(--bordeaux);
+    }
+
+    .clients__name:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 16px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ============================================================
+       MÉTHODE
+    ============================================================ */
+    .method {
+      padding: var(--section-pad) 0;
+      background: var(--cream);
+    }
+
+    .method__header {
+      margin-bottom: 80px;
+    }
+
+    .method__eyebrow {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .method__title {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: clamp(40px, 4vw, 64px);
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .method__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .method__steps {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    /* Vertical gold timeline line */
+    .method__steps::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 12px;
+      bottom: 12px;
+      width: 1.5px;
+      background: linear-gradient(to bottom, var(--gold) 0%, var(--gold) 100%);
+    }
+
+    .method__step {
+      position: relative;
+      padding-bottom: 56px;
+    }
+
+    .method__step:last-child {
+      padding-bottom: 0;
+    }
+
+    /* Dot on the timeline */
+    .method__step::before {
+      content: '';
+      position: absolute;
+      left: -47px;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      background: var(--cream);
+    }
+
+    .method__step-num {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .method__step-title {
+      font-family: var(--ff-display);
+      font-weight: 500;
+      font-size: 28px;
+      color: var(--bordeaux);
+      margin-bottom: 12px;
+    }
+
+    .method__step-desc {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+
+    .method__right {
+      padding-top: 8px;
+    }
+
+    .method__quote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(24px, 2.5vw, 36px);
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 40px;
+      padding-left: 32px;
+      border-left: 1.5px solid var(--gold);
+    }
+
+    .method__promise {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .method__promise-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
+    .method__promise-icon {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       CTA FINAL
+    ============================================================ */
+    .cta-final {
+      padding: var(--section-pad) 0;
+      background: var(--cream-dark);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final::before {
+      content: 'OVM';
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: 28vw;
+      color: rgba(107,39,55,0.04);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .cta-final__inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-final__label {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+    }
+
+    .cta-final__title {
+      font-family: var(--ff-display);
+      font-weight: 300;
+      font-size: clamp(48px, 6vw, 88px);
+      line-height: 1.1;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .cta-final__subtitle {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 18px;
+      color: var(--text-light);
+      margin-bottom: 56px;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-final__actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .cta-final__email {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 15px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .cta-final__email:hover {
+      color: var(--bordeaux);
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    .footer {
+      background: var(--bordeaux-dark);
+      padding: 72px 0 48px;
+      position: relative;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 48px;
+      right: 48px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      opacity: 0.5;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    .footer__logo {
+      font-family: var(--ff-display);
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--cream);
+      margin-bottom: 16px;
+    }
+
+    .footer__baseline {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.8;
+      color: rgba(250,247,242,0.45);
+    }
+
+    .footer__col-title {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .footer__links a {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 14px;
+      color: rgba(250,247,242,0.55);
+      letter-spacing: 0.04em;
+      transition: color var(--transition);
+    }
+
+    .footer__links a:hover {
+      color: var(--cream);
+    }
+
+    .footer__contact-item {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 14px;
+      color: rgba(250,247,242,0.55);
+      line-height: 1.8;
+      display: block;
+    }
+
+    .footer__contact-item a {
+      color: rgba(250,247,242,0.55);
+      transition: color var(--transition);
+    }
+
+    .footer__contact-item a:hover {
+      color: var(--cream);
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(201,169,110,0.12);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer__legal {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: rgba(250,247,242,0.3);
+    }
+
+    .footer__social {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer__social a {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.35);
+      transition: color var(--transition);
+    }
+
+    .footer__social a:hover {
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       RESPONSIVE — 1200px
+    ============================================================ */
+    @media (max-width: 1200px) {
+      :root {
+        --section-pad: 100px;
+      }
+
+      .container {
+        padding: 0 36px;
+      }
+
+      .hero__geo {
+        width: 280px;
+        height: 280px;
+      }
+
+      .hero__geo-core {
+        inset: 90px;
+      }
+
+      .stats__item {
+        padding: 0 28px;
+      }
+
+      .service-item__inner {
+        grid-template-columns: 60px 1fr 1fr;
+      }
+      .service-item__tag {
+        display: none;
+      }
+    }
+
+    /* ============================================================
+       RESPONSIVE — 768px (MOBILE)
+    ============================================================ */
+    @media (max-width: 768px) {
+      :root {
+        --section-pad: var(--section-pad-sm);
+      }
+
+      .container {
+        padding: 0 24px;
+      }
+
+      /* Nav */
+      .nav__links,
+      .nav__cta {
+        display: none;
+      }
+
+      .nav__hamburger {
+        display: flex;
+      }
+
+      /* Hero */
+      .hero::before {
+        font-size: 70vw;
+        right: -15vw;
+      }
+
+      .hero__inner {
+        grid-template-columns: 1fr;
+        gap: 60px;
+      }
+
+      .hero__left {
+        padding: 100px 0 40px;
+      }
+
+      .hero__right {
+        padding: 0 0 60px;
+      }
+
+      .hero__geo {
+        width: 220px;
+        height: 220px;
+      }
+
+      .hero__geo-core {
+        inset: 70px;
+      }
+
+      /* Stats */
+      .stats__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px 0;
+      }
+
+      .stats__item:not(:last-child)::after {
+        display: none;
+      }
+
+      .stats__item:nth-child(1),
+      .stats__item:nth-child(2) {
+        border-bottom: 1px solid rgba(201,169,110,0.15);
+        padding-bottom: 48px;
+      }
+
+      /* Services */
+      .services__header {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        margin-bottom: 48px;
+      }
+
+      .service-item__inner {
+        grid-template-columns: 48px 1fr;
+        gap: 16px;
+      }
+
+      .service-item__desc,
+      .service-item__tag {
+        display: none;
+      }
+
+      .service-item__inner {
+        padding: 24px 0;
+      }
+
+      .service-item__name {
+        font-size: 22px;
+      }
+
+      /* Case */
+      .case__inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      .case__left {
+        padding-left: 0;
+      }
+
+      /* Method */
+      .method__inner {
+        grid-template-columns: 1fr;
+        gap: 56px;
+      }
+
+      /* Footer */
+      .footer__grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .footer__bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* Clients */
+      .clients__row {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .clients__name::after {
+        display: none;
+      }
+
+      .clients__name {
+        padding: 0;
+      }
+
+      /* Testimonial quotes */
+      .testimonial__quotes {
+        font-size: 100px;
+        left: -10px;
+      }
+    }
+
+    /* ============================================================
+       SMOOTH SCROLL INDICATOR
+    ============================================================ */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 48px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0.5;
+      z-index: 2;
+    }
+
+    .scroll-indicator__line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.4; transform: scaleY(0.7); }
+      50% { opacity: 1; transform: scaleY(1); }
+    }
+
+    .scroll-indicator__text {
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 9px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ============================================================
+       GEO ANIMATION
+    ============================================================ */
+    @keyframes rotateSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero__geo-outer {
+      animation: rotateSlow 40s linear infinite;
+    }
+
+    .hero__geo-inner {
+      animation: rotateSlow 25s linear infinite reverse;
+    }
+
+    /* Section header gold accent */
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="#" class="nav__logo">OVM Communication</a>
+
+        <ul class="nav__links">
+          <li><a href="#services">Savoir-faire</a></li>
+          <li><a href="#case">Réalisations</a></li>
+          <li><a href="#method">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <a href="#contact" class="nav__cta"><span>Parlons de votre projet</span></a>
+
+        <button class="nav__hamburger" aria-label="Menu" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero__inner">
+
+        <!-- Left column -->
+        <div class="hero__left">
+          <div class="hero__eyebrow reveal">
+            <span class="gold-rule"></span>
+            <span class="hero__eyebrow-text">Agence créative · Lille</span>
+          </div>
+
+          <h1 class="hero__title reveal reveal-delay-1">
+            L'agence qui met<br>
+            votre marque en<br>
+            <em>lumière.</em>
+          </h1>
+
+          <p class="hero__subtitle reveal reveal-delay-2">
+            Depuis 2012, OVM Communication accompagne les entrepreneurs
+            et les PME exigeants qui refusent le compromis entre qualité,
+            honnêteté et efficacité.
+          </p>
+
+          <div class="hero__actions reveal reveal-delay-3">
+            <a href="#contact" class="btn-primary">
+              <span>Démarrer un projet</span>
+            </a>
+            <a href="#case" class="btn-ghost">
+              Découvrir nos réalisations <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column — abstract geo composition -->
+        <div class="hero__right reveal reveal-delay-2">
+          <div class="hero__geo">
+            <div class="hero__geo-outer"></div>
+            <div class="hero__geo-fill"></div>
+            <div class="hero__geo-inner"></div>
+            <div class="hero__geo-core"></div>
+            <div class="hero__geo-dot"></div>
+            <div class="hero__geo-dot"></div>
+            <div class="hero__geo-dot"></div>
+            <div class="hero__geo-dot"></div>
+            <div class="hero__geo-line-h"></div>
+            <div class="hero__geo-line-v"></div>
+          </div>
+
+          <div class="hero__badge">
+            Fondée en 2012 · Lambersart, Lille
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-indicator__line"></div>
+      <span class="scroll-indicator__text">Défiler</span>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHIFFRES CLÉS
+  ============================================================ -->
+  <section class="stats" id="stats">
+    <div class="container">
+      <div class="stats__grid">
+
+        <div class="stats__item reveal">
+          <div class="stats__number">
+            <span class="counter" data-target="12" data-suffix="">12</span>
+            <span class="suffix">&nbsp;ans</span>
+          </div>
+          <div class="stats__rule"></div>
+          <p class="stats__label">d'accompagnement<br>et d'expertise</p>
+        </div>
+
+        <div class="stats__item reveal reveal-delay-1">
+          <div class="stats__number">
+            <span class="counter" data-target="50" data-suffix="+">50+</span>
+          </div>
+          <div class="stats__rule"></div>
+          <p class="stats__label">marques transformées<br>et propulsées</p>
+        </div>
+
+        <div class="stats__item reveal reveal-delay-2">
+          <div class="stats__number">
+            <span style="font-size: 0.7em;">~</span><span class="counter" data-target="100" data-suffix="%">100%</span>
+          </div>
+          <div class="stats__rule"></div>
+          <p class="stats__label">clients fidèles<br>et satisfaits</p>
+        </div>
+
+        <div class="stats__item reveal reveal-delay-3">
+          <div class="stats__number">
+            <span class="counter" data-target="1" data-suffix="">1</span>
+          </div>
+          <div class="stats__rule"></div>
+          <p class="stats__label">interlocuteur dédié<br>du premier au dernier jour</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================ -->
+  <section class="services" id="services">
+    <div class="container">
+
+      <div class="services__header">
+        <div class="reveal">
+          <span class="section-eyebrow">Savoir-faire</span>
+          <h2 class="services__title">
+            Un savoir-faire complet,<br>au service de<br>votre ambition.
+          </h2>
+        </div>
+        <p class="services__intro reveal reveal-delay-1">
+          De l'identité visuelle au référencement naturel, en passant par la création
+          de sites web et le motion design — OVM vous offre la polyvalence d'une grande
+          agence avec la réactivité et l'attention d'un partenaire de confiance.
+        </p>
+      </div>
+
+      <ul class="services__list">
+
+        <li class="service-item reveal">
+          <div class="service-item__inner">
+            <span class="service-item__num">I</span>
+            <span class="service-item__name">Identité visuelle</span>
+            <span class="service-item__desc">Logo, charte graphique, univers de marque. Votre identité construite pour durer et pour convaincre.</span>
+            <span class="service-item__tag">Branding</span>
+          </div>
+        </li>
+
+        <li class="service-item reveal reveal-delay-1">
+          <div class="service-item__inner">
+            <span class="service-item__num">II</span>
+            <span class="service-item__name">Création de sites web</span>
+            <span class="service-item__desc">Sites vitrine, e-commerce, plateformes sur-mesure. Design et performance au service de votre croissance.</span>
+            <span class="service-item__tag">Digital</span>
+          </div>
+        </li>
+
+        <li class="service-item reveal reveal-delay-2">
+          <div class="service-item__inner">
+            <span class="service-item__num">III</span>
+            <span class="service-item__name">Motion design</span>
+            <span class="service-item__desc">Animation de marque, vidéo institutionnelle, motion graphics. Le mouvement au service de l'émotion.</span>
+            <span class="service-item__tag">Vidéo</span>
+          </div>
+        </li>
+
+        <li class="service-item reveal">
+          <div class="service-item__inner">
+            <span class="service-item__num">IV</span>
+            <span class="service-item__name">SEO & Stratégie digitale</span>
+            <span class="service-item__desc">Audit, optimisation technique, contenu éditorial. Être visible là où vos clients vous cherchent.</span>
+            <span class="service-item__tag">Référencement</span>
+          </div>
+        </li>
+
+        <li class="service-item reveal reveal-delay-1">
+          <div class="service-item__inner">
+            <span class="service-item__num">V</span>
+            <span class="service-item__name">Communication print</span>
+            <span class="service-item__desc">Plaquettes, supports commerciaux, signalétique. La qualité tangible qui laisse une impression durable.</span>
+            <span class="service-item__tag">Print</span>
+          </div>
+        </li>
+
+        <li class="service-item reveal reveal-delay-2">
+          <div class="service-item__inner">
+            <span class="service-item__num">VI</span>
+            <span class="service-item__name">Réseaux sociaux</span>
+            <span class="service-item__desc">Stratégie éditoriale, création de contenu, pilotage. Une présence cohérente et engageante sur chaque canal.</span>
+            <span class="service-item__tag">Social</span>
+          </div>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CAS CLIENT
+  ============================================================ -->
+  <section class="case" id="case">
+    <div class="container">
+      <div class="case__inner">
+
+        <div class="case__left reveal">
+          <p class="case__label">
+            <span class="gold-rule"></span>
+            Étude de cas
+          </p>
+          <blockquote class="case__pullquote">
+            "Une marque repensée.<br>Un chiffre d'affaires<br>qui suit."
+          </blockquote>
+          <p class="case__desc">
+            Cabinet de conseil indépendant en Région Hauts-de-France. Accompagnement
+            complet sur 18 mois : refonte de l'identité visuelle, création d'un nouveau
+            site web, stratégie SEO et production de contenus. Une transformation profonde
+            qui a repositionné le cabinet comme référence sur son marché.
+          </p>
+          <a href="#contact" class="case__link">
+            Discuter d'un projet similaire <span>→</span>
+          </a>
+        </div>
+
+        <div class="case__right">
+
+          <div class="case__metric reveal reveal-delay-1">
+            <div class="case__metric-value">+340%</div>
+            <div class="case__metric-label">de visibilité organique en 12 mois</div>
+          </div>
+
+          <div class="case__metric reveal reveal-delay-2">
+            <div class="case__metric-value">×3</div>
+            <div class="case__metric-label">leads qualifiés générés chaque mois</div>
+          </div>
+
+          <div class="case__metric reveal reveal-delay-3">
+            <div class="case__metric-value">18 mois</div>
+            <div class="case__metric-label">de suivi, d'itération et d'accompagnement</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TÉMOIGNAGE
+  ============================================================ -->
+  <section class="testimonial" id="testimonial">
+    <div class="container">
+      <div class="testimonial__inner reveal">
+
+        <div class="testimonial__quotes">&ldquo;</div>
+
+        <blockquote class="testimonial__text">
+          Olivier a une capacité rare&nbsp;: il comprend immédiatement ce qu'on cherche
+          à exprimer, et le traduit avec une justesse remarquable. C'est un partenaire
+          de confiance, disponible, exigeant avec lui-même et toujours honnête
+          sur ce qui est réellement utile.
+        </blockquote>
+
+        <div class="testimonial__rule"></div>
+
+        <p class="testimonial__author">
+          Marie L. — Fondatrice, cabinet de coaching professionnel, Lille
+        </p>
+
+        <div class="testimonial__quotes testimonial__quotes-close">&rdquo;</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       LOGOS CLIENTS
+  ============================================================ -->
+  <section class="clients">
+    <div class="container">
+      <p class="clients__label reveal">Ils nous accordent leur confiance</p>
+      <div class="clients__row reveal reveal-delay-1">
+        <span class="clients__name">Artisans & PME</span>
+        <span class="clients__name">Cabinets conseil</span>
+        <span class="clients__name">Startups Nord</span>
+        <span class="clients__name">Professions libérales</span>
+        <span class="clients__name">Associations</span>
+        <span class="clients__name">Commerces locaux</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MÉTHODE
+  ============================================================ -->
+  <section class="method" id="method">
+    <div class="container">
+
+      <div class="method__header reveal">
+        <p class="method__eyebrow">Notre méthode</p>
+        <h2 class="method__title">
+          Simple. Transparent.<br>Toujours à vos côtés.
+        </h2>
+      </div>
+
+      <div class="method__inner">
+
+        <!-- Steps timeline -->
+        <div class="method__steps">
+
+          <div class="method__step reveal">
+            <p class="method__step-num">Étape 01</p>
+            <h3 class="method__step-title">Écoute</h3>
+            <p class="method__step-desc">
+              Un premier échange de 30 minutes pour cerner vos enjeux, vos ambitions
+              et le contexte de votre projet. Sans jargon, sans engagement.
+            </p>
+          </div>
+
+          <div class="method__step reveal reveal-delay-1">
+            <p class="method__step-num">Étape 02</p>
+            <h3 class="method__step-title">Proposition</h3>
+            <p class="method__step-desc">
+              Une stratégie sur-mesure et un devis transparent sous 48 heures.
+              Pas de surprise, pas de postes cachés — juste une roadmap claire et budgétée.
+            </p>
+          </div>
+
+          <div class="method__step reveal reveal-delay-2">
+            <p class="method__step-num">Étape 03</p>
+            <h3 class="method__step-title">Création</h3>
+            <p class="method__step-desc">
+              Un processus itératif et collaboratif jusqu'à la version parfaite.
+              Vous validez chaque étape, vous gardez la main.
+            </p>
+          </div>
+
+          <div class="method__step reveal reveal-delay-3">
+            <p class="method__step-num">Étape 04</p>
+            <h3 class="method__step-title">Livraison & suivi</h3>
+            <p class="method__step-desc">
+              Les livrables complets, la formation à vos outils, et un accompagnement
+              post-lancement. Parce que notre travail ne s'arrête pas à la livraison.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Right: quote + promises -->
+        <div class="method__right reveal reveal-delay-1">
+
+          <blockquote class="method__quote">
+            "Le futur de la communication tient plus du cœur que de la technologie."
+          </blockquote>
+
+          <div class="method__promise">
+            <div class="method__promise-item">
+              <div class="method__promise-icon"></div>
+              <span>Un seul interlocuteur du brief à la livraison — Olivier Van Meyel en personne.</span>
+            </div>
+            <div class="method__promise-item">
+              <div class="method__promise-icon"></div>
+              <span>Une tarification juste et transparente, sans surprises en cours de route.</span>
+            </div>
+            <div class="method__promise-item">
+              <div class="method__promise-icon"></div>
+              <span>La réactivité d'une micro-structure avec l'expertise d'une agence confirmée.</span>
+            </div>
+            <div class="method__promise-item">
+              <div class="method__promise-icon"></div>
+              <span>~100% de clients fidèles — notre meilleure carte de visite depuis 2012.</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA FINAL
+  ============================================================ -->
+  <section class="cta-final" id="contact">
+    <div class="container">
+      <div class="cta-final__inner">
+
+        <p class="cta-final__label reveal">Premier échange offert</p>
+
+        <h2 class="cta-final__title reveal reveal-delay-1">
+          Votre projet mérite<br>une conversation.
+        </h2>
+
+        <p class="cta-final__subtitle reveal reveal-delay-2">
+          Rencontrons-nous. Le premier échange est offert, sans engagement.
+        </p>
+
+        <div class="cta-final__actions reveal reveal-delay-3">
+          <a href="mailto:hello@ovm-communication.fr" class="btn-primary">
+            <span>Prendre rendez-vous →</span>
+          </a>
+          <a href="mailto:hello@ovm-communication.fr" class="cta-final__email">
+            hello@ovm-communication.fr
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer__grid">
+
+        <div>
+          <p class="footer__logo">OVM Communication</p>
+          <p class="footer__baseline">
+            L'agence créative qui met votre marque en lumière.<br>
+            Lille · Hauts-de-France · et au-delà.
+          </p>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Navigation</p>
+          <ul class="footer__links">
+            <li><a href="#services">Savoir-faire</a></li>
+            <li><a href="#case">Réalisations</a></li>
+            <li><a href="#method">Notre méthode</a></li>
+            <li><a href="#testimonial">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer__col-title">Contact</p>
+          <span class="footer__contact-item">
+            <a href="mailto:hello@ovm-communication.fr">hello@ovm-communication.fr</a>
+          </span>
+          <span class="footer__contact-item" style="margin-top: 8px;">
+            Lambersart, Lille<br>Hauts-de-France
+          </span>
+          <div style="margin-top: 28px;">
+            <p class="footer__col-title">Réseaux</p>
+            <div class="footer__social">
+              <a href="#">LinkedIn</a>
+              <a href="#">Behance</a>
+              <a href="#">Instagram</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__legal">
+          © 2025 OVM Communication · SARL · RCS Lille 823 002 381 · SIREN 823 002 381
+        </p>
+        <p class="footer__legal">
+          Mentions légales · Politique de confidentialité
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script>
+    /* ---- Nav scroll behaviour ---- */
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ---- Scroll reveal (IntersectionObserver) ---- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ---- Counter animation ---- */
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || '';
+      const duration = 1800;
+      const startTime = performance.now();
+
+      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = easeOut(progress);
+        const current = Math.round(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        }
+      };
+
+      requestAnimationFrame(step);
+    }
+
+    const counterEls = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterObserver.observe(el));
+
+    /* ---- Hamburger (mobile) ---- */
+    const hamburger = document.getElementById('hamburger');
+    hamburger.addEventListener('click', () => {
+      // Simple mobile nav toggle — expand nav links
+      const links = document.querySelector('.nav__links');
+      const cta = document.querySelector('.nav__cta');
+
+      if (links.style.display === 'flex') {
+        links.style.display = '';
+        cta.style.display = '';
+        document.querySelector('.nav').style.background = '';
+      } else {
+        links.style.cssText = 'display:flex; flex-direction:column; position:fixed; top:80px; left:0; right:0; background:rgba(250,247,242,0.98); padding:32px 24px; gap:24px; backdrop-filter:blur(12px); border-top:1px solid rgba(201,169,110,0.2);';
+        cta.style.cssText = 'display:block; margin: 0 24px; position:fixed; top: calc(80px + 200px); left:0; right:0;';
+      }
+    });
+
+    /* ---- Parallax subtle on hero watermark ---- */
+    window.addEventListener('scroll', () => {
+      const hero = document.querySelector('.hero');
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        hero.style.setProperty('--parallax', `${scrolled * 0.15}px`);
+      }
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
