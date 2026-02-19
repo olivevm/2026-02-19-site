@@ -25,17 +25,17 @@
     ================================================================ */
     :root {
       --bg:           #000000;
-      --bg-2:         #0A0A0A;
-      --bg-card:      #141414;
+      --bg-2:         #0C0A08;
+      --bg-card:      #161210;
       --text:         #FFFFFF;
-      --text-muted:   #888888;
-      --violet:       #7C3AED;
-      --blue:         #2563EB;
-      --cyan:         #06B6D4;
-      --gradient:          linear-gradient(135deg, #7C3AED, #2563EB, #06B6D4);
-      --gradient-text:     linear-gradient(135deg, #A78BFA 0%, #60A5FA 50%, #22D3EE 100%);
-      --gradient-border:   linear-gradient(var(--angle), #7C3AED, #2563EB, #06B6D4);
-      --border-subtle:    rgba(255,255,255,0.07);
+      --text-muted:   #8A8278;
+      --orange:       #F18700;
+      --orange-deep:  #C44B00;
+      --orange-warm:  #FF9F1C;
+      --gradient:          linear-gradient(135deg, #FF9F1C, #F18700, #C44B00);
+      --gradient-text:     linear-gradient(135deg, #FFB84D 0%, #F18700 55%, #E85D04 100%);
+      --gradient-border:   linear-gradient(var(--angle), #FF9F1C, #F18700, #C44B00);
+      --border-subtle:    rgba(241,135,0,0.12);
       --font-display: 'Syne', sans-serif;
       --font-body:    'IBM Plex Sans', sans-serif;
       --nav-h:        72px;
@@ -146,7 +146,7 @@
       position: absolute;
       inset: -1.5px;
       border-radius: 100px;
-      background: conic-gradient(from var(--angle), #7C3AED, #2563EB, #06B6D4, #7C3AED);
+      background: conic-gradient(from var(--angle), #FF9F1C, #F18700, #C44B00, #FF9F1C);
       z-index: -1;
       animation: rotate-border 3s linear infinite;
     }
@@ -158,7 +158,7 @@
       background: #000;
       z-index: -1;
     }
-    .nav-cta:hover::after { background: rgba(124,58,237,0.15); }
+    .nav-cta:hover::after { background: rgba(241,135,0,0.15); }
 
     @keyframes rotate-border {
       to { --angle: 360deg; }
@@ -295,7 +295,7 @@
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(124,58,237,0.45);
+      box-shadow: 0 12px 40px rgba(241,135,0,0.45);
     }
 
     .btn-ghost {
@@ -391,7 +391,7 @@
     }
 
     .marquee-track span.sep {
-      color: rgba(124,58,237,0.6);
+      color: rgba(241,135,0,0.7);
       letter-spacing: 0.1em;
       padding: 0 10px;
     }
@@ -730,21 +730,29 @@
       width: max-content;
       animation: marquee 40s linear infinite;
     }
+    .clients-track:hover { animation-play-state: paused; }
 
     .client-logo-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 0 48px;
       flex-shrink: 0;
     }
 
     .client-logo-wrap img {
-      max-height: 40px;
-      max-width: 120px;
+      height: 36px;
       width: auto;
+      max-width: 120px;
+      object-fit: contain;
       filter: brightness(0) invert(1);
-      opacity: 0.45;
-      transition: opacity 0.3s;
+      opacity: 0.4;
+      transition: opacity 0.3s ease, filter 0.3s ease;
     }
-    .client-logo-wrap img:hover { opacity: 1; }
+    .client-logo-wrap img:hover {
+      opacity: 0.85;
+      filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(10deg);
+    }
 
     /* ================================================================
        CASE STUDY
@@ -1663,8 +1671,8 @@
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g1" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#A78BFA"/>
-              <stop offset="100%" stop-color="#22D3EE"/>
+              <stop offset="0%" stop-color="#FFB84D"/>
+              <stop offset="100%" stop-color="#C44B00"/>
             </linearGradient>
           </defs>
           <circle cx="22" cy="16" r="7" stroke="url(#g1)" stroke-width="1.5"/>
@@ -1680,8 +1688,8 @@
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g2" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#A78BFA"/>
-              <stop offset="100%" stop-color="#22D3EE"/>
+              <stop offset="0%" stop-color="#FFB84D"/>
+              <stop offset="100%" stop-color="#C44B00"/>
             </linearGradient>
           </defs>
           <rect x="4" y="8" width="36" height="24" rx="3" stroke="url(#g2)" stroke-width="1.5"/>
@@ -1698,8 +1706,8 @@
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g3" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#A78BFA"/>
-              <stop offset="100%" stop-color="#22D3EE"/>
+              <stop offset="0%" stop-color="#FFB84D"/>
+              <stop offset="100%" stop-color="#C44B00"/>
             </linearGradient>
           </defs>
           <polygon points="10,8 34,22 10,36" stroke="url(#g3)" stroke-width="1.5" stroke-linejoin="round"/>
@@ -1714,8 +1722,8 @@
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g4" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#A78BFA"/>
-              <stop offset="100%" stop-color="#22D3EE"/>
+              <stop offset="0%" stop-color="#FFB84D"/>
+              <stop offset="100%" stop-color="#C44B00"/>
             </linearGradient>
           </defs>
           <circle cx="22" cy="22" r="14" stroke="url(#g4)" stroke-width="1.5"/>
@@ -1731,8 +1739,8 @@
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g5" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#A78BFA"/>
-              <stop offset="100%" stop-color="#22D3EE"/>
+              <stop offset="0%" stop-color="#FFB84D"/>
+              <stop offset="100%" stop-color="#C44B00"/>
             </linearGradient>
           </defs>
           <rect x="6" y="6" width="32" height="32" rx="2" stroke="url(#g5)" stroke-width="1.5"/>
@@ -1748,8 +1756,8 @@
         <svg class="service-icon" viewBox="0 0 44 44" fill="none" aria-hidden="true">
           <defs>
             <linearGradient id="g6" x1="0" y1="0" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stop-color="#A78BFA"/>
-              <stop offset="100%" stop-color="#22D3EE"/>
+              <stop offset="0%" stop-color="#FFB84D"/>
+              <stop offset="100%" stop-color="#C44B00"/>
             </linearGradient>
           </defs>
           <path d="M8 30 C12 10, 20 8, 22 22 C24 36, 32 34, 36 14" stroke="url(#g6)" stroke-width="1.5" stroke-linecap="round"/>
